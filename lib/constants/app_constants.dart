@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class AppConstant {
   static const appName = "Alpha Entrance Academy";
   static const backgroundColor2 = Color.fromARGB(255, 250, 246, 247);
-  static const primaryColor = Color(0xFFD70000);
+  //static const primaryColor = Color(0xFFD70000);
+  static const primaryColor = Color(0xFFEF7B00); // Orange
+
   static const lightGradient = Color.fromARGB(255, 214, 63, 69);
   static const darkGradient = Color.fromARGB(255, 138, 3, 3);
   static const cardBackground = Colors.white;
@@ -15,7 +17,7 @@ class AppConstant {
   static const subtitlecolor = Color(0xFF989EA7);
   static const shadowColor = Color.fromARGB(255, 202, 188, 188);
   static const buttonupdate = Color(0xFFF6921E);
-  static const backgroundColor = Color.fromARGB(255, 247, 246, 250);
+  static const backgroundColor = Colors.white;
   static const notificationbackground = Color.fromARGB(255, 230, 225, 225);
 
   // Dots colors

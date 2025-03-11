@@ -1,10 +1,8 @@
-//newalpha
-
-import 'package:alpha/features/auth/screen/login.dart';
 import 'package:flutter/material.dart';
-import 'package:alpha/constants/app_constants.dart'; // Adjust this import as needed
-import 'package:alpha/common%20widgets/welcome_screen.dart';
-import 'package:swipeable_button_view/swipeable_button_view.dart'; // Adjust this import as needed
+import 'package:swipeable_button_view/swipeable_button_view.dart';
+import 'package:talent_app/common%20widgets/welcome_screen.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/auth/screen/login.dart'; // Adjust this import as needed
 
 class OnboardingScreen extends StatefulWidget {
   @override

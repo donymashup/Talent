@@ -1,9 +1,8 @@
-import 'package:alpha/common%20widgets/LargeLoading.dart';
-import 'package:alpha/features/subscribed_courses/widgets/videoListCardWidget.dart';
-import 'package:alpha/models/video_model.dart';
-// import 'package:better_player/better_player.dart';
 import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/common%20widgets/LargeLoading.dart';
+import 'package:talent_app/features/subscribed_courses/widgets/videoListCardWidget.dart';
+import 'package:talent_app/models/video_model.dart';
 
 class VideoPlayer extends StatefulWidget {
   final VideoModel videoModel;

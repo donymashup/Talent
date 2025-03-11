@@ -1,6 +1,6 @@
-import 'package:alpha/features/home/services/home_service.dart';
-import 'package:alpha/models/slider_images_model.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/features/home/services/home_service.dart';
+import 'package:talent_app/models/slider_images_model.dart';
 
 class CarouselImage extends StatefulWidget {
   const CarouselImage({super.key});

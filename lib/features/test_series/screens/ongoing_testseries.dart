@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/test_series/screens/start_testseries_quiz.dart';
-import 'package:alpha/features/test_series/services/ongoing_testseries_services.dart';
-import 'package:alpha/models/ongoing_testseries_model.dart';
 import 'package:intl/intl.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/test_series/screens/start_testseries_quiz.dart';
+import 'package:talent_app/features/test_series/services/ongoing_testseries_services.dart';
+import 'package:talent_app/models/ongoing_testseries_model.dart';
 
 class OngoingTestSeries extends StatefulWidget {
   @override

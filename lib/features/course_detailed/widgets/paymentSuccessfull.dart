@@ -1,6 +1,6 @@
-import 'package:alpha/common%20widgets/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:talent_app/common%20widgets/bottom_navigation_bar.dart';
 
 class PaymentSuccessfull extends StatelessWidget {
   const PaymentSuccessfull({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
-import 'package:alpha/features/test_series/screens/attend_main_test_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:alpha/constants/app_constants.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/test_series/screens/attend_main_test_screen.dart';
 
 class StartQuizSeriesInfo extends StatelessWidget {
   final String quizTitle;

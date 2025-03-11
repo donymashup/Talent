@@ -1,7 +1,7 @@
-import 'package:alpha/common%20widgets/bottom_navigation_bar.dart';
-import 'package:alpha/features/auth/services/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:talent_app/common%20widgets/bottom_navigation_bar.dart';
+import 'package:talent_app/features/auth/services/login_service.dart';
 
 class CompleteRegistration extends StatefulWidget {
   final String firstName;

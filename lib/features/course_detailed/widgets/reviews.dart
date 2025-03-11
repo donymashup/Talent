@@ -1,7 +1,7 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/models/course_details_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/models/course_details_model.dart';
 
 class ReviewTab extends StatelessWidget {
   final CourseDetailsModel courseDetailsModel;

@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/controllers/user_controller.dart';
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/controllers/user_controller.dart';
 
 class ChatGptScreen extends StatefulWidget {
   final UserController userController;

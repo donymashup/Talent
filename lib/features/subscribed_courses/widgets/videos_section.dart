@@ -1,8 +1,8 @@
-import 'package:alpha/features/subscribed_courses/screen/chapterVideoPlayerScreen.dart';
-import 'package:alpha/models/video_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:talent_app/features/subscribed_courses/screen/chapterVideoPlayerScreen.dart';
+import 'package:talent_app/models/video_model.dart';
 
 class VideoSectionWidget extends StatelessWidget {
   final IconData icon;

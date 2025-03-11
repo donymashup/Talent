@@ -1,5 +1,5 @@
-import 'package:alpha/features/auth/widgets/edit_pen.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/features/auth/widgets/edit_pen.dart';
 
 class profile extends StatelessWidget {
   const profile({

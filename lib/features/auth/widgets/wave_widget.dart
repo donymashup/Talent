@@ -1,5 +1,5 @@
-import 'package:alpha/features/auth/widgets/wave_clipper.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/features/auth/widgets/wave_clipper.dart';
 
 class wave_widget extends StatelessWidget {
   final dynamic height;

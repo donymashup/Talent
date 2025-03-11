@@ -1,11 +1,11 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/subscribed_courses/screen/subject_list.dart';
-import 'package:alpha/features/subscribed_courses/services/user_subscriptions_services.dart';
-import 'package:alpha/models/classs_list_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/subscribed_courses/screen/subject_list.dart';
+import 'package:talent_app/features/subscribed_courses/services/user_subscriptions_services.dart';
+import 'package:talent_app/models/classs_list_model.dart';
 
 class ClassList extends StatefulWidget {
   final String courseId;

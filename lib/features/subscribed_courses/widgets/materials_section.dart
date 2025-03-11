@@ -1,6 +1,6 @@
-import 'package:alpha/features/subscribed_courses/screen/pdfview_screen.dart';
-import 'package:alpha/models/material_model.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/features/subscribed_courses/screen/pdfview_screen.dart';
+import 'package:talent_app/models/material_model.dart';
 
 class MaterialsSectionWidget extends StatelessWidget {
   final IconData icon;

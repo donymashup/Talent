@@ -1,13 +1,13 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/auth/services/login_service.dart';
-import 'package:alpha/features/subscribed_courses/screen/my_courses.dart';
-import 'package:alpha/features/live/screen/live_courses.dart';
-import 'package:alpha/features/test_series/screens/test_series.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:alpha/features/home/screen/home_screen.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/auth/services/login_service.dart';
+import 'package:talent_app/features/home/screen/home_screen.dart';
+import 'package:talent_app/features/live/screen/live_courses.dart';
+import 'package:talent_app/features/subscribed_courses/screen/my_courses.dart';
+import 'package:talent_app/features/test_series/screens/test_series.dart';
 
 class CustomBottomNavigation extends StatefulWidget {
   const CustomBottomNavigation({super.key});

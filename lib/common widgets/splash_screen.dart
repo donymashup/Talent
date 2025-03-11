@@ -1,6 +1,6 @@
-import 'package:alpha/common%20widgets/onboarding_screens.dart';
-import 'package:alpha/constants/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/common%20widgets/onboarding_screens.dart';
+import 'package:talent_app/constants/app_constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

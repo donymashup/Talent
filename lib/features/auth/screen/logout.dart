@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:alpha/features/auth/screen/login.dart';
+import 'package:talent_app/features/auth/screen/login.dart';
 
 void showLogoutDialog(BuildContext context) {
   showDialog(

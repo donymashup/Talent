@@ -1,5 +1,5 @@
-import 'package:alpha/constants/config.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/constants/config.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class TermsPage extends StatelessWidget {

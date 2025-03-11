@@ -1,17 +1,17 @@
 import 'dart:convert';
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/constants/config.dart';
-import 'package:alpha/controllers/user_controller.dart';
-import 'package:alpha/models/common_model.dart';
-import 'package:alpha/models/login_model.dart';
-import 'package:alpha/models/otp_model.dart';
-import 'package:alpha/models/registerUserModel.dart';
-import 'package:alpha/models/user_details_model.dart';
-import 'package:alpha/features/auth/screen/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/constants/config.dart';
+import 'package:talent_app/controllers/user_controller.dart';
+import 'package:talent_app/features/auth/screen/login.dart';
+import 'package:talent_app/models/common_model.dart';
+import 'package:talent_app/models/login_model.dart';
+import 'package:talent_app/models/otp_model.dart';
+import 'package:talent_app/models/registerUserModel.dart';
+import 'package:talent_app/models/user_details_model.dart';
 
 class AuthService {
   // Login user

@@ -1,8 +1,9 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/test_series/screens/completed_testseries.dart';
-import 'package:alpha/features/test_series/screens/ongoing_testseries.dart';
-import 'package:alpha/features/test_series/screens/upcoming_testseries.dart';
+
 import 'package:flutter/material.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/test_series/screens/completed_testseries.dart';
+import 'package:talent_app/features/test_series/screens/ongoing_testseries.dart';
+import 'package:talent_app/features/test_series/screens/upcoming_testseries.dart';
 
 class TestSeriesTabBarView extends StatefulWidget {
   @override

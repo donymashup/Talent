@@ -1,13 +1,11 @@
-//import 'package:alpha/common%20widgets/side_menu.dart';
-import 'package:alpha/bindings/app_bindings.dart';
-import 'package:alpha/common%20widgets/splash_screen.dart';
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/course_detailed/screens/checkout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:alpha/common%20widgets/bottom_navigation_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_tex/flutter_tex.dart';
+import 'package:talent_app/bindings/app_bindings.dart';
+import 'package:talent_app/common%20widgets/bottom_navigation_bar.dart';
+import 'package:talent_app/common%20widgets/splash_screen.dart';
+import 'package:talent_app/constants/app_constants.dart';
 // import 'package:tpstreams_player_sdk/tpstreams_player_sdk.dart';
 
 void main() async {

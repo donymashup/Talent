@@ -1,6 +1,6 @@
-import 'package:alpha/features/test_series/screens/attent_practice_test_screen.dart';
-import 'package:alpha/models/practice_test_model.dart';
 import 'package:flutter/material.dart';
+import 'package:talent_app/features/test_series/screens/attent_practice_test_screen.dart';
+import 'package:talent_app/models/practice_test_model.dart';
 
 class PracticeTestSection extends StatelessWidget {
   final IconData icon;

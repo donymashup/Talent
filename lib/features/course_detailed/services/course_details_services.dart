@@ -1,13 +1,13 @@
 import 'dart:convert';
-import 'package:alpha/constants/config.dart';
-import 'package:alpha/constants/utils.dart';
-import 'package:alpha/models/course_details_model.dart';
-import 'package:alpha/models/orderDetailsModel.dart';
-import 'package:alpha/models/paymentEnrollmentModel.dart';
-import 'package:alpha/models/promoCodeModel.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talent_app/constants/config.dart';
+import 'package:talent_app/constants/utils.dart';
+import 'package:talent_app/models/course_details_model.dart';
+import 'package:talent_app/models/orderDetailsModel.dart';
+import 'package:talent_app/models/paymentEnrollmentModel.dart';
+import 'package:talent_app/models/promoCodeModel.dart';
 
 class CourseDetailsService {
   Future<CourseDetailsModel?> getCourseDetails({

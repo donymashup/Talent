@@ -1,12 +1,12 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/live/services/live_service.dart';
-import 'package:alpha/features/live/widgets/calender.dart';
-import 'package:alpha/models/live_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/live/services/live_service.dart';
+import 'package:talent_app/features/live/widgets/calender.dart';
+import 'package:talent_app/models/live_model.dart';
 
 class RecordingsCourses extends StatefulWidget {
   const RecordingsCourses({super.key});

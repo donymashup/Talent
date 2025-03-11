@@ -1,12 +1,12 @@
-import 'package:alpha/common%20widgets/customappbar.dart';
-import 'package:alpha/features/drawermenu/screens/drawer.dart';
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/subscribed_courses/screen/class_list.dart';
-import 'package:alpha/features/subscribed_courses/services/user_subscriptions_services.dart';
-import 'package:alpha/models/user_subscriptions_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:talent_app/common%20widgets/customappbar.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/drawermenu/screens/drawer.dart';
+import 'package:talent_app/features/subscribed_courses/screen/class_list.dart';
+import 'package:talent_app/features/subscribed_courses/services/user_subscriptions_services.dart';
+import 'package:talent_app/models/user_subscriptions_model.dart';
 
 class MyCourses extends StatefulWidget {
   const MyCourses({super.key});

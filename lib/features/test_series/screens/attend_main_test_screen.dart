@@ -1,8 +1,7 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/constants/config.dart';
-import 'package:alpha/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:talent_app/constants/config.dart';
+import 'package:talent_app/controllers/user_controller.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class AttendMainTestScreen extends StatelessWidget {

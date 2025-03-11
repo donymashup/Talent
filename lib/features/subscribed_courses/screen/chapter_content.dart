@@ -1,11 +1,11 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/subscribed_courses/services/user_subscriptions_services.dart';
-import 'package:alpha/features/subscribed_courses/widgets/materials_section.dart';
-import 'package:alpha/features/subscribed_courses/widgets/practice_test_section.dart';
-import 'package:alpha/features/subscribed_courses/widgets/video_section.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/subscribed_courses/services/user_subscriptions_services.dart';
+import 'package:talent_app/features/subscribed_courses/widgets/materials_section.dart';
+import 'package:talent_app/features/subscribed_courses/widgets/practice_test_section.dart';
+import 'package:talent_app/features/subscribed_courses/widgets/videos_section.dart';
 
 class ChapterContents extends StatefulWidget {
   final String chapterImage;

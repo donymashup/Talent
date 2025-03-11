@@ -1,10 +1,10 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/course_detailed/screens/freeEnrollmentScreen.dart';
-import 'package:alpha/features/course_detailed/screens/paymentProcessingScreen.dart';
-import 'package:alpha/models/course_details_model.dart';
 import 'package:flutter/material.dart';
-import 'package:alpha/features/course_detailed/services/course_details_services.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/course_detailed/screens/freeEnrollmentScreen.dart';
+import 'package:talent_app/features/course_detailed/screens/paymentProcessingScreen.dart';
+import 'package:talent_app/features/course_detailed/services/course_details_services.dart';
+import 'package:talent_app/models/course_details_model.dart';
 
 class CheckoutScreen extends StatefulWidget {
   final CourseDetailsModel thisCourses;

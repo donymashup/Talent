@@ -1,10 +1,10 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/controllers/user_controller.dart';
-import 'package:alpha/features/home/widgets/custom_Image_Button.dart';
-import 'package:alpha/features/notification/screen/notifications.dart';
-import 'package:alpha/features/profile/screen/my_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/controllers/user_controller.dart';
+import 'package:talent_app/features/home/widgets/custom_Image_Button.dart';
+import 'package:talent_app/features/notification/screen/notifications.dart';
+import 'package:talent_app/features/profile/screen/my_profile.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String appbarTitle;

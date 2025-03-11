@@ -1,23 +1,20 @@
-import 'package:alpha/common%20widgets/customappbar.dart';
-import 'package:alpha/features/drawermenu/screens/drawer.dart';
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/controllers/selected_course_controller.dart';
-import 'package:alpha/controllers/user_controller.dart';
-import 'package:alpha/features/course_detailed/screens/course_detail.dart';
-import 'package:alpha/features/home/services/home_service.dart';
-import 'package:alpha/features/home/widgets/carousel.dart';
-import 'package:alpha/features/home/widgets/course_list.dart';
-import 'package:alpha/features/home/widgets/custom_Image_Button.dart';
-import 'package:alpha/features/home/widgets/header_list.dart';
-import 'package:alpha/features/home/widgets/search_field.dart';
-import 'package:alpha/features/subscribed_courses/screen/class_list.dart';
-import 'package:alpha/models/available_courses_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:talent_app/common%20widgets/customappbar.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/controllers/selected_course_controller.dart';
+import 'package:talent_app/controllers/user_controller.dart';
+import 'package:talent_app/features/course_detailed/screens/course_detail.dart';
+import 'package:talent_app/features/drawermenu/screens/drawer.dart';
+import 'package:talent_app/features/home/services/home_service.dart';
+import 'package:talent_app/features/home/widgets/carousel.dart';
+import 'package:talent_app/features/home/widgets/search_field.dart';
+import 'package:talent_app/features/subscribed_courses/screen/class_list.dart';
+import 'package:talent_app/models/available_courses_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

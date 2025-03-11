@@ -1,9 +1,9 @@
-import 'package:alpha/constants/config.dart';
-import 'package:alpha/models/completed_testseries_model.dart';
-import 'package:alpha/constants/utils.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:talent_app/constants/config.dart';
+import 'package:talent_app/constants/utils.dart';
+import 'package:talent_app/models/completed_testseries_model.dart';
 
 class CompletedTestseriesServices {
   Future<AttendedTestsModel?> getAttendedTests({

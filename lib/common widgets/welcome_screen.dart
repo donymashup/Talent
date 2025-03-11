@@ -1,8 +1,6 @@
-//newalpha
-
 import 'package:flutter/material.dart';
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/common%20widgets/color_dot.dart';
+import 'package:talent_app/common%20widgets/color_dot.dart';
+import 'package:talent_app/constants/app_constants.dart';
 
 class WelcomePage extends StatefulWidget {
   final int currentIndex;

@@ -1,17 +1,17 @@
 import 'dart:convert';
-import 'package:alpha/constants/config.dart';
-import 'package:alpha/constants/utils.dart';
-import 'package:alpha/models/chapter_list_model.dart';
-import 'package:alpha/models/classs_list_model.dart';
-import 'package:alpha/models/common_model.dart';
-import 'package:alpha/models/material_model.dart';
-import 'package:alpha/models/practice_test_model.dart';
-import 'package:alpha/models/subject_list_model.dart';
-import 'package:alpha/models/user_subscriptions_model.dart';
-import 'package:alpha/models/video_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:talent_app/constants/config.dart';
+import 'package:talent_app/constants/utils.dart';
+import 'package:talent_app/models/chapter_list_model.dart';
+import 'package:talent_app/models/classs_list_model.dart';
+import 'package:talent_app/models/common_model.dart';
+import 'package:talent_app/models/material_model.dart';
+import 'package:talent_app/models/practice_test_model.dart';
+import 'package:talent_app/models/subject_list_model.dart';
+import 'package:talent_app/models/user_subscriptions_model.dart';
+import 'package:talent_app/models/video_model.dart';
 
 class UserSubscriptionsServices {
   Future<UserSubscriptionsModel?> getUserSubscriptions({

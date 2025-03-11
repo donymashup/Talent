@@ -1,10 +1,9 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/subscribed_courses/screen/chapter_list.dart';
-import 'package:alpha/features/subscribed_courses/services/user_subscriptions_services.dart';
-import 'package:alpha/models/subject_list_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:talent_app/features/subscribed_courses/screen/chapter_list.dart';
+import 'package:talent_app/features/subscribed_courses/services/user_subscriptions_services.dart';
+import 'package:talent_app/models/subject_list_model.dart';
 
 class SubjectList extends StatefulWidget {
   final String classId;

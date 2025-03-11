@@ -1,8 +1,8 @@
-import 'package:alpha/constants/app_constants.dart';
-import 'package:alpha/features/course_detailed/screens/checkout_screen.dart';
-import 'package:alpha/models/course_details_model.dart';
 import 'package:flutter/material.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
+import 'package:talent_app/constants/app_constants.dart';
+import 'package:talent_app/features/course_detailed/screens/checkout_screen.dart';
+import 'package:talent_app/models/course_details_model.dart';
 
 class EnrollButton extends StatefulWidget {
   final CourseDetailsModel courseDetailsModel;

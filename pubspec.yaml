@@ -1,0 +1,83 @@
+name: alpha
+description: "A new Flutter project."
+
+# Prevents accidental publishing to pub.dev
+publish_to: "none"
+
+# Application versioning
+version: 1.0.0+1
+
+# Define the Dart SDK version
+environment:
+  sdk: ">=3.2.6 <4.0.0"
+
+# Dependencies required for the project
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI and Icon Packages
+  cupertino_icons: ^1.0.6
+  font_awesome_flutter: ^10.1.0
+  fluentui_system_icons: ^1.1.271
+  lucide_icons: ^0.257.0
+
+  # UI Components and Animations
+  swipeable_button_view: ^0.0.2
+  pinput: ^5.0.1
+  carousel_slider: ^5.0.0
+  lottie: ^3.3.1
+  flutter_rating_bar: ^4.0.1
+  google_nav_bar: ^5.0.6
+
+  # Functionalities
+  intl_phone_field: ^3.2.0
+  intl: ^0.19.0
+  url_launcher: ^6.3.1
+  shared_preferences: ^2.5.2
+  flutter_tex: ^4.0.13
+  flutter_html: 3.0.0-beta.2
+  webview_flutter: ^4.10.0
+  image_picker: ^1.1.2
+  http: ^1.3.0
+  get: ^4.6.6
+  fl_chart: ^0.70.2
+  flutter_markdown: ^0.7.5
+  flutter_widget_from_html: ^0.15.3
+  syncfusion_flutter_pdfviewer: ^28.2.7
+  dash_chat_2: ^0.0.21
+  chat_gpt_sdk: ^3.1.4
+  cached_network_image: ^3.4.1
+  shimmer: ^3.0.0
+  better_player: ^0.0.84
+  youtube_player_flutter: ^9.1.1
+  better_player_plus: ^1.0.8
+  # tpstreams_player_sdk: ^2.1.7
+  flutter_inappwebview: ^6.1.5
+  razorpay_flutter: ^1.4.0
+
+# Developer dependencies
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1 # Package for setting the app icon
+
+# Flutter launcher icons configuration
+flutter_launcher_icons:
+  android: true # Enable for Android
+  ios: true # Enable for iOS
+  image_path: "assets/images/alpha_icon.png" # Path to your logo
+  adaptive_icon_background: "#ffffff"
+  remove_alpha_ios: true # White background
+
+# Flutter-specific settings
+flutter:
+  uses-material-design: true
+
+  # Include assets like images, icons, and animations
+  assets:
+    - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/lottie/

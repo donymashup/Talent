@@ -1,6 +1,7 @@
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
+import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:talent_app/constants/app_constants.dart';
 import 'package:talent_app/features/auth/services/login_service.dart';
@@ -44,7 +45,7 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
     String? userId = prefs.getString('userId');
 
     if (userId != null) {
-       await AuthService()
+      await AuthService()
           .getUserDetails(userId: userId, context: context)
           .then((value) {
         if (value?.type == "success") {
@@ -56,7 +57,6 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
         AuthService().logout(context);
       });
     } else {
-     // print("User ID not found in SharedPreferences");
       AuthService().logout(context);
     }
   }
@@ -69,40 +69,47 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
           : _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: isLoading
           ? null
-          : SafeArea(
-              child: Container(
-                color: AppConstant.backgroundColor,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                child: GNav(
-                  gap: 8,
-                  activeColor: AppConstant.primaryColor2,
-                  color: Colors.grey,
-                  backgroundColor: AppConstant.backgroundColor,
-                  tabBackgroundColor: AppConstant.primaryColor2.withAlpha(50),
-                  padding: const EdgeInsets.all(16),
-                  onTabChange: _onItemTapped,
-                  selectedIndex: _selectedIndex,
-                  tabs: const [
-                    GButton(
-                      icon: Icons.home,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.school_outlined,
-                      text: 'My Courses',
-                    ),
-                    GButton(
-                      icon: Icons.live_tv,
-                      text: 'Live',
-                    ),
-                    GButton(
-                      icon: FluentIcons.clipboard_task_list_16_regular,
-                      text: 'Test Series',
-                    ),
-                  ],
+          : CurvedNavigationBar(
+              backgroundColor: AppConstant.backgroundColor,
+              color: AppConstant.primaryColorLight,
+              animationDuration: const Duration(milliseconds: 300),
+              height: 60,
+              index: _selectedIndex,
+              onTap: _onItemTapped,
+              items: <CurvedNavigationBarItem>[
+                CurvedNavigationBarItem(
+                  child: Icon(Icons.home, size: 30, color: _selectedIndex == 0 ? AppConstant.secondaryColor : Colors.white),
+                  label: 'Home',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: _selectedIndex == 0 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+                  ),
                 ),
-              ),
+                CurvedNavigationBarItem(
+                  child: Icon(Icons.school_outlined, size: 30, color: _selectedIndex == 1 ? AppConstant.secondaryColor : Colors.white),
+                  label: 'My Courses',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: _selectedIndex == 1 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+                  ),
+                ),
+                CurvedNavigationBarItem(
+                  child: Icon(Icons.live_tv, size: 30, color: _selectedIndex == 2 ? AppConstant.secondaryColor : Colors.white),
+                  label: 'Live',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: _selectedIndex == 2 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+                  ),
+                ),
+                CurvedNavigationBarItem(
+                  child: Icon(FluentIcons.clipboard_task_list_16_regular, size: 30, color: _selectedIndex == 3 ? AppConstant.secondaryColor : Colors.white),
+                  label: 'Test Series',
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: _selectedIndex == 3 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+                  ),
+                ),
+              ],
             ),
     );
   }

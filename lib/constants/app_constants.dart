@@ -5,6 +5,10 @@ class AppConstant {
   static const backgroundColor2 = Color.fromARGB(255, 250, 246, 247);
   //static const primaryColor = Color(0xFFD70000);
   static const primaryColor = Color(0xFFEF7B00); // Orange
+  static final primaryColorLight = Color(0xFFEF7B00).withOpacity(0.8 ); // Light Orange
+
+  static const secondaryColor = Color(0xFF2F2484); //dart blue
+  static final secondaryColorLight = Color(0xFF2F2484).withOpacity(0.7); // Light dart blue
 
   static const lightGradient = Color.fromARGB(255, 214, 63, 69);
   static const darkGradient = Color.fromARGB(255, 138, 3, 3);
@@ -34,7 +38,7 @@ class AppConstant {
   //
 
   static const Gradient redWhiteGradient = LinearGradient(
-    colors: [AppConstant.backgroundColor, Color(0xFFF8A2A5)],
+    colors: [AppConstant.cardBackground,AppConstant.cardBackground],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );

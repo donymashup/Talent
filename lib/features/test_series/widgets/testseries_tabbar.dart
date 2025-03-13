@@ -77,7 +77,7 @@ class _TestSeriesTabBarViewState extends State<TestSeriesTabBarView> with Single
           duration: const Duration(milliseconds: 100),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: _tabController.index == index ? AppConstant.primaryColor2 : Colors.transparent,
+            color: _tabController.index == index ? AppConstant.primaryColorLight : Colors.transparent,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Text(

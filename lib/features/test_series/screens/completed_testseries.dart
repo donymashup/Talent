@@ -43,74 +43,81 @@ class _CompletedTestSeriesScreenState extends State<CompletedTestSeriesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppConstant.backgroundColor, // 🔹 Added background color
+      backgroundColor: AppConstant.backgroundColor,
       body: isLoading
-          ? const Center(child: CircularProgressIndicator()) // Show loader
+          ? const Center(child: CircularProgressIndicator())
           : errorMessage != null
               ? Center(
-                  child:
-                      Text(errorMessage!, style: TextStyle(color: Colors.red)))
+                  child: Text(errorMessage!,
+                      style: const TextStyle(color: Colors.red)))
               : ListView.builder(
                   padding: const EdgeInsets.all(16),
                   itemCount: completedTestSeries.length,
                   itemBuilder: (context, index) {
                     var test = completedTestSeries[index];
 
-                    return Card(
-                      //color: Colors.white, // Ensures good contrast with background
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                      elevation: 4, // Adds slight shadow for depth
+                    return Container(
                       margin: const EdgeInsets.only(bottom: 12),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Colors.green, Colors.green],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 6,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.all(12), // Reduced padding
+                        // Removed isDense parameter as it is not valid for ListTile
+                        leading: const Icon(Icons.check_circle,
+                            size: 40, color: Colors.white),
+                        title: Flexible(
+                          child: Text(
+                            test.name ?? "Unnamed Test",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.white),
+                          ),
+                        ),
+                        subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ListTile(
-                              leading: const Icon(Icons.check_circle,
-                                  size: 30, color: Colors.blue),
-                              title: Text(
-                                test.name ?? "Unnamed Test",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                              trailing: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            MainPerformanceScreen(
-                                                testid: test.testid!)),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.orange),
-                                child: const Text("Review"),
-                              ),
-                            ),
-                            const Divider(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                _infoRightText(
-                                    'Start Time', formatDate(test.start!)),
-                                _infoLeftText(
-                                    'End Time', formatDate(test.subTime!)),
-                              ],
-                            ),
                             const SizedBox(height: 8),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                _infoRightText(
-                                    'Duration', test.duration ?? "N/A"),
-                                _infoLeftText(
-                                    'Total Marks', "N/A"), // Adjust as per API
-                              ],
-                            ),
+                            _infoText(
+                                'Start Time', formatDate(test.start!), Colors.white70),
+                            _infoText(
+                                'End Time', formatDate(test.subTime!), Colors.white70),
+                            _infoText(
+                                'Duration', test.duration ?? "N/A", Colors.white),
                           ],
+                        ),
+                        trailing: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      MainPerformanceScreen(testid: test.testid!)),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Colors.green,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          child: const Text("Review"),
                         ),
                       ),
                     );
@@ -119,35 +126,22 @@ class _CompletedTestSeriesScreenState extends State<CompletedTestSeriesScreen> {
     );
   }
 
-  Widget _infoRightText(String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(fontSize: 12, color: Colors.grey),
-        ),
-        Text(
-          value,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
-      ],
-    );
-  }
-
-  Widget _infoLeftText(String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(fontSize: 12, color: Colors.grey),
-        ),
-        Text(
-          value,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
-      ],
+  Widget _infoText(String label, String value, Color textColor) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Row(
+        children: [
+          Icon(Icons.access_time, size: 14, color: textColor),
+          const SizedBox(width: 4),
+          Expanded( // Ensures text stays within screen boundaries
+            child: Text(
+              "$label: $value",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 14, color: textColor),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

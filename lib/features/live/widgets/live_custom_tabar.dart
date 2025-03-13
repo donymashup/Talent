@@ -76,7 +76,7 @@ class _CustomTabBarViewState extends State<CustomTabBarView> with SingleTickerPr
           duration: const Duration(milliseconds: 100), // Smooth transition
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: _tabController.index == index ? AppConstant.primaryColor2 : Colors.transparent,
+            color: _tabController.index == index ? AppConstant.primaryColorLight : Colors.transparent,
             borderRadius: BorderRadius.circular(25),
           ),
           child: Text(

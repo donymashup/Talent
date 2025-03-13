@@ -51,58 +51,68 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
             itemBuilder: (context, index) {
               var test = testSeries[index];
 
-              return Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                elevation: 4, // Adds a subtle shadow
+              return Container(
                 margin: const EdgeInsets.only(bottom: 12),
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [AppConstant.secondaryColorLight, AppConstant.secondaryColorLight],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    const BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 6,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: ListTile(
+                  contentPadding: const EdgeInsets.all(12), // Reduced padding
+                  // isDense: true, // Helps prevent overflow
+                  leading: const Icon(Icons.assignment, size: 40, color: Colors.white),
+                  title: Flexible(
+                    child: Text(
+                      test.mainTestsName ?? "Unknown Test",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.white),
+                    ),
+                  ),
+                  subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ListTile(
-                        leading: const Icon(Icons.assignment,
-                            size: 30, color: Colors.green),
-                        title: Text(
-                          test.mainTestsName ?? "Unknown Test",
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        trailing: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => StartQuizSeriesInfo(
-                                  quizTitle:
-                                      test.mainTestsName ?? "Unknown Test",
-                                  totalQuestions: int.tryParse(
-                                          test.mainTestsQuestions ?? "0") ??
-                                      0, // ✅ Fix applied
-                                  duration: test.mainTestsDuration ?? "N/A",
-                                ),
-                              ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange),
-                          child: const Text("Start"),
-                        ),
-                      ),
-                      const Divider(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          _infoText('Start Time',
-                              formatDate(test.mainTestsStart ?? "")),
-                          _infoText(
-                              'End Time', formatDate(test.mainTestsEnd ?? "")),
-                        ],
-                      ),
                       const SizedBox(height: 8),
-                      _infoText('Duration', test.mainTestsDuration ?? "N/A"),
+                      _infoText('Start Time', formatDate(test.mainTestsStart ?? ""), Colors.white70),
+                      _infoText('End Time', formatDate(test.mainTestsEnd ?? ""), Colors.white70),
+                      _infoText('Duration', test.mainTestsDuration ?? "N/A", Colors.white),
                     ],
+                  ),
+                  trailing: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StartQuizSeriesInfo(
+                            quizTitle: test.mainTestsName ?? "Unknown Test",
+                            totalQuestions: int.tryParse(test.mainTestsQuestions ?? "0") ?? 0,
+                            duration: test.mainTestsDuration ?? "N/A",
+                          ),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: AppConstant.secondaryColorLight,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: const Text("Start"),
                   ),
                 ),
               );
@@ -113,14 +123,22 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
     );
   }
 
-  Widget _infoText(String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: const TextStyle(fontSize: 12, color: Colors.grey)),
-        Text(value,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-      ],
+  Widget _infoText(String label, String value, Color textColor) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Row(
+        children: [
+          Icon(Icons.access_time, size: 14, color: textColor),
+          const SizedBox(width: 4),
+          Expanded(
+            child: Text(
+              "$label: $value",
+              overflow: TextOverflow.ellipsis, // Prevents text overflow
+              style: TextStyle(fontSize: 14, color: textColor),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

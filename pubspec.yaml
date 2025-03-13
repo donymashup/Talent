@@ -68,7 +68,7 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true # Enable for Android
   ios: true # Enable for iOS
-  image_path: "assets/images/alpha_icon.png" # Path to your logo
+  image_path: "assets/icons/talent_icon.png" # Path to your logo
   adaptive_icon_background: "#ffffff"
   remove_alpha_ios: true # White background
 

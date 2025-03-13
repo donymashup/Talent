@@ -38,7 +38,7 @@ class SearchField extends StatelessWidget {
                   padding:
                       const EdgeInsets.all(8.0), // Add padding for alignment
                   child: Image.asset(
-                    'assets/icons/search.png',
+                    'assets/icons/aiblub.png',
                     height: 24,
                     width: 24,
                   ),
@@ -49,14 +49,14 @@ class SearchField extends StatelessWidget {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0), 
-            child: Image.asset(
-              'assets/icons/aigpt_icon.png',
-              height: 34,
-              width: 34,
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0), 
+          //   child: Image.asset(
+          //     'assets/icons/aigpt_icon.png',
+          //     height: 34,
+          //     width: 34,
+          //   ),
+          // ),
         ],
       ),
     );

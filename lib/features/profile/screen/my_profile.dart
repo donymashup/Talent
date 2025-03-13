@@ -233,7 +233,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ElevatedButton(
                       onPressed: _pickImage,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppConstant.primaryColor2,
+                        backgroundColor: AppConstant.primaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -258,7 +258,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(17),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppConstant.primaryColor2),
+                          borderSide: BorderSide(color: AppConstant.primaryColor),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         contentPadding: const EdgeInsets.symmetric(horizontal: 20),
@@ -270,7 +270,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ElevatedButton(
                       onPressed: isUpdatingPassword ? null : updatePassword,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppConstant.buttonupdate,
+                        backgroundColor: AppConstant.primaryColor2,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),

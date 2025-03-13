@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talent_app/constants/app_constants.dart';
 import 'package:talent_app/features/home/services/home_service.dart';
 import 'package:talent_app/models/slider_images_model.dart';
 
@@ -101,7 +102,7 @@ class _CarouselImageState extends State<CarouselImage> {
                 width: _currentIndex == entry.key ? 12 : 8,
                 height: 8,
                 decoration: BoxDecoration(
-                  color: _currentIndex == entry.key ? Colors.blue : Colors.grey,
+                  color: _currentIndex == entry.key ? AppConstant.secondaryColor : Colors.grey,
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),

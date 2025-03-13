@@ -329,95 +329,98 @@ Widget _categoryHeader() {
     },
   );
 }
-// ...existing code...code...
 
-  Widget _courseList() {
-    return FutureBuilder<AvailableCoursesModel?>(
-      future: _futureCourses,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        } else if (!snapshot.hasData || snapshot.data!.data!.isEmpty) {
-          return Center(child: Text('No courses available'));
-        } else {
-          final courses = snapshot.data!.data![_selectedCategoryIndex].courses;
-          return GridView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8,
-              mainAxisSpacing: 8,
-              childAspectRatio: 0.9, // Fixed overflow by increasing card height
-            ),
-            itemCount: courses?.length,
-            itemBuilder: (context, index) {
-              final course = courses?[index];
-              return GestureDetector(
-                onTap: () => _navigateToCourseDetail(context, course),
-                child: Card(
-                  margin: const EdgeInsets.all(8),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 5,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-                        child: CachedNetworkImage(
-                          imageUrl: course?.courseDetails?.image ?? '',
-                          height: 120,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Shimmer.fromColors(
-                            baseColor: Colors.grey[300]!,
-                            highlightColor: Colors.grey[100]!,
-                            child: Container(height: 120, width: double.infinity, color: Colors.white),
-                          ),
-                          errorWidget: (context, url, error) => const Icon(Icons.broken_image),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              course?.courseDetails?.name ?? 'No Name',
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(height: 5),
-                            Row(
-                              children: [
-                                const Icon(Icons.star, color: Colors.amber, size: 16),
-                                const SizedBox(width: 5),
-                                Text(course!.avgStars.toString(),
-                                    style: const TextStyle(fontSize: 14)),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+// ...existing code...
+
+Widget _courseList() {
+  return FutureBuilder<AvailableCoursesModel?>(
+    future: _futureCourses,
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Center(child: CircularProgressIndicator());
+      } else if (snapshot.hasError) {
+        return Center(child: Text('Error: ${snapshot.error}'));
+      } else if (!snapshot.hasData || snapshot.data!.data!.isEmpty) {
+        return Center(child: Text('No courses available'));
+      } else {
+        final courses = snapshot.data!.data![_selectedCategoryIndex].courses;
+        return GridView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: 1, // Fixed overflow by increasing card height
+          ),
+          itemCount: courses?.length,
+          itemBuilder: (context, index) {
+            final course = courses?[index];
+            return GestureDetector(
+              onTap: () => _navigateToCourseDetail(context, course),
+              child: Card(
+                color: Colors.white, // Add background color here
+                margin: const EdgeInsets.all(8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              );
-            },
-          );
-        }
-      },
-    );
-  }
+                elevation: 5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                      child: CachedNetworkImage(
+                        imageUrl: course?.courseDetails?.image ?? '',
+                        height: 120,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Container(height: 120, width: double.infinity, color: Colors.white),
+                        ),
+                        errorWidget: (context, url, error) => const Icon(Icons.broken_image),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            course?.courseDetails?.name ?? 'No Name',
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 5),
+                          Row(
+                            children: [
+                              const Icon(Icons.star, color: Colors.amber, size: 16),
+                              const SizedBox(width: 5),
+                              Text(course!.avgStars.toString(),
+                                  style: const TextStyle(fontSize: 14)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      }
+    },
+  );
 }
+
+// ...existing code...
 
 
 void _navigateToCourseDetail(BuildContext context, dynamic course) {
@@ -443,4 +446,5 @@ void _navigateToCourseDetail(BuildContext context, dynamic course) {
       );
     }
   }
+}
 }

@@ -6,6 +6,7 @@ import 'package:talent_app/features/auth/screen/registration.dart';
 import 'package:talent_app/features/auth/services/login_service.dart';
 import 'package:talent_app/features/auth/widgets/custom_elavatedbutton.dart';
 import 'package:talent_app/features/auth/widgets/custom_textfield.dart';
+import 'package:lottie/lottie.dart'; // Add this import
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -61,10 +62,10 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppConstant.backgroundColor,
-      appBar: AppBar(
-        backgroundColor: AppConstant.backgroundColor,
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: AppConstant.backgroundColor,
+      //   elevation: 0,
+      // ),
       body: Stack(
         children: [
           // Gradient Background
@@ -89,24 +90,29 @@ class _LoginState extends State<Login> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 40),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: Image.asset(
                         'assets/images/talentlogo.png', // Replace with your logo asset path
-                        height: 100, // Adjust the height as needed
+                        height: 75, // Adjust the height as needed
                       ),
                     ),
-                    const Text(
-                      'Login',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        height: 1.2,
-                      ),
+                    // const Text(
+                    //   'Login',
+                    //   textAlign: TextAlign.center,
+                    //   style: TextStyle(
+                    //     fontSize: 28,
+                    //     fontWeight: FontWeight.bold,
+                    //     height: 1.2,
+                    //   ),
+                    // ),
+                    //const SizedBox(height: 8),
+                    // Add Lottie animation here
+                    Lottie.asset(
+                      'assets/lottie/loginlottie.json', // Replace with your Lottie animation asset path
+                      height: 300, // Adjust the height as needed
                     ),
-                    const SizedBox(height: 8),
                     const Text(
                       'Please enter your phone number and\npassword to continue',
                       textAlign: TextAlign.center,

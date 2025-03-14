@@ -45,6 +45,7 @@ class _MyCoursesState extends State<MyCourses> {
               return const Center(child: Text("No courses found"));
             }
             return ListView.builder(
+              padding: const EdgeInsets.all(10),
               itemCount: snapshot.data!.courses!.length,
               itemBuilder: (context, index) {
                 final course = snapshot.data!.courses![index];
@@ -55,77 +56,143 @@ class _MyCoursesState extends State<MyCourses> {
                       MaterialPageRoute(
                         builder: (context) => ClassList(
                           courseId: course.courseDetails!.courseListId!,
-                          courseName: course.courseDetails?.courseListName ?? "Course Name",
+                          courseName: course.courseDetails?.courseListName ??
+                              "Course Name",
                           batchId: course.courseDetails!.batchListId!,
-                          courseImage: course.courseDetails?.courseListImage ?? "assets/images/course1.png",
+                          courseImage: course.courseDetails?.courseListImage ??
+                              "assets/images/course1.png",
                         ),
                       ),
                     );
                   },
                   child: Card(
-                    margin: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    color: AppConstant.cardBackground,
-                    elevation: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
+                    elevation: 6,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.white
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          // Course Image
                           Hero(
-                            tag: "courseImage-${course.courseDetails!.courseListId!}", // Hero tag
+                            tag:
+                                "courseImage-${course.courseDetails!.courseListId!}",
                             child: ClipRRect(
-                              borderRadius: const BorderRadius.horizontal(
-                                left: Radius.circular(10),
-                              ),
+                              borderRadius: BorderRadius.circular(10),
                               child: CachedNetworkImage(
-                                imageUrl: course.courseDetails?.courseListImage ?? "",
-                                width: double.infinity,
+                                imageUrl:
+                                    course.courseDetails?.courseListImage ?? "",
+                                width: 100,
+                                height: 100,
                                 fit: BoxFit.cover,
-                                placeholder: (context, url) => Shimmer.fromColors(
+                                placeholder: (context, url) =>
+                                    Shimmer.fromColors(
                                   baseColor: Colors.grey[300]!,
                                   highlightColor: Colors.grey[100]!,
                                   child: Container(
-                                    width: double.infinity,
-                                    height: 150,
+                                    width: 100,
+                                    height: 100,
                                     color: Colors.white,
                                   ),
                                 ),
-                                errorWidget: (context, url, error) => Image.asset(
+                                errorWidget: (context, url, error) =>
+                                    Image.asset(
                                   "assets/images/course1.png",
-                                  width: double.infinity,
+                                  width: 100,
+                                  height: 100,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 5),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  course.courseDetails?.courseListName ?? "Course Name",
+                          const SizedBox(width: 10),
+
+                          // Course Details
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  course.courseDetails?.courseListName ??
+                                      "Course Name",
                                   style: const TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
                                   ),
+                                  maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  const Icon(Icons.star, color: Colors.amber, size: 15),
-                                  const SizedBox(width: 5),
-                                  Text(
-                                    course.avgStars?.toString() ?? "0.0",
-                                    style: const TextStyle(fontSize: 14),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )
+                                // const SizedBox(height: 5),
+                                // Text(
+                                //   "Batch: ${course.courseDetails?.batchListId ?? 'N/A'}",
+                                //   style: TextStyle(
+                                //     fontSize: 14,
+                                //     color: Colors.grey.shade700,
+                                //   ),
+                                // ),
+                                const SizedBox(height: 8),
+
+                                // Rating & Button Row
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        const Icon(Icons.star,
+                                            color: Colors.amber, size: 18),
+                                        const SizedBox(width: 5),
+                                        Text(
+                                          course.avgStars?.toString() ?? "0.0",
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => ClassList(
+                                              courseId: course.courseDetails!
+                                                  .courseListId!,
+                                              courseName: course.courseDetails
+                                                      ?.courseListName ??
+                                                  "Course Name",
+                                              batchId: course.courseDetails!
+                                                  .batchListId!,
+                                              courseImage: course.courseDetails
+                                                      ?.courseListImage ??
+                                                  "assets/images/course1.png",
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppConstant.primaryColor3,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      child: const Text("Begin Now",style: TextStyle(color: Colors.white),),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),

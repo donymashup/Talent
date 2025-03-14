@@ -127,23 +127,33 @@ class _CompletedTestSeriesScreenState extends State<CompletedTestSeriesScreen> {
   }
 
   Widget _infoText(String label, String value, Color textColor) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2),
-      child: Row(
-        children: [
-          Icon(Icons.access_time, size: 14, color: textColor),
-          const SizedBox(width: 4),
-          Expanded( // Ensures text stays within screen boundaries
-            child: Text(
-              "$label: $value",
-              overflow: TextOverflow.ellipsis,
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 2),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start, // Aligns text properly
+      children: [
+        Icon(Icons.access_time, size: 14, color: textColor),
+        const SizedBox(width: 4),
+        Expanded(
+          child: RichText(
+            text: TextSpan(
               style: TextStyle(fontSize: 14, color: textColor),
+              children: [
+                TextSpan(
+                  text: "$label: ",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: value,
+                ),
+              ],
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
   String formatDate(String inputDateTimeString) {
     DateTime dateTime = DateTime.parse(inputDateTimeString);

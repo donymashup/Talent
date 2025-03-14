@@ -124,23 +124,25 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
   }
 
   Widget _infoText(String label, String value, Color textColor) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2),
-      child: Row(
-        children: [
-          Icon(Icons.access_time, size: 14, color: textColor),
-          const SizedBox(width: 4),
-          Expanded(
-            child: Text(
-              "$label: $value",
-              overflow: TextOverflow.ellipsis, // Prevents text overflow
-              style: TextStyle(fontSize: 14, color: textColor),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 2),
+    child: Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Icon(Icons.access_time, size: 14, color: textColor),
+        const SizedBox(width: 4),
+        Text(
+          "$label: ",
+          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: textColor),
+        ),
+        Text(
+          value,
+          style: TextStyle(fontSize: 14, color: textColor),
+        ),
+      ],
+    ),
+  );
+}
 
   String formatDate(String inputDateTimeString) {
     if (inputDateTimeString.isEmpty) return "N/A";

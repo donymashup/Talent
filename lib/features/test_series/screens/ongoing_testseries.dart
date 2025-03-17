@@ -37,7 +37,7 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
               snapshot.data!.ongoing!.isEmpty) {
             return const Center(
               child: Text(
-                "No ongoing test series available.",
+                "No ongoing test series available",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
             );

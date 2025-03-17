@@ -52,7 +52,7 @@ class _UpcomingTestSeriesScreenState extends State<UpcomingTestSeriesScreen> {
                   child:
                       Text(errorMessage!, style: TextStyle(color: Colors.red)))
               : upcomingTests.isEmpty
-                  ? const Center(child: Text("No upcoming tests available"))
+                  ? const Center(child: Text("No upcoming tests available", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16)))
                   : ListView.builder(
                       padding: const EdgeInsets.all(16),
                       itemCount: upcomingTests.length,

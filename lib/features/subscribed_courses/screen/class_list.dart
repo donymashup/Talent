@@ -145,7 +145,7 @@ class _ClassListState extends State<ClassList> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                             side: BorderSide(
-                              color: AppConstant.primaryColor2,
+                              color: AppConstant.secondaryColorLight,
                               width: 1,
                             ),
                           ),
@@ -158,7 +158,7 @@ class _ClassListState extends State<ClassList> {
                                 Icon(
                                   Icons.folder,
                                   size: 50,
-                                  color: AppConstant.primaryColor2,
+                                  color: AppConstant.secondaryColor,
                                 ),
                                 SizedBox(width: 10),
                                 Expanded(
@@ -199,7 +199,7 @@ class _ClassListState extends State<ClassList> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide(
-                            color: AppConstant.primaryColor2,
+                            color: AppConstant.primaryColor,
                             width: 1,
                           ),
                         ),
@@ -288,9 +288,9 @@ class _SwipeableAddReviewSection extends StatelessWidget {
       label: const Text('Add review'),
       icon: const Icon(Icons.rate_review),
       backgroundColor: AppConstant.backgroundColor,
-      foregroundColor: AppConstant.primaryColor2,
+      foregroundColor: AppConstant.primaryColor,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.red, width: 2),
+        side: BorderSide(color: AppConstant.primaryColor, width: 2),
         borderRadius: BorderRadius.circular(20),
       ),
     );
@@ -368,7 +368,7 @@ class _AddReviewSheetState extends State<_AddReviewSheet> {
                     addUserReview(courseId: widget.courseId);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppConstant.primaryColor,
+                    backgroundColor: AppConstant.primaryColor2,
                   ),
                   child: const Text(
                     'Submit',

@@ -180,7 +180,7 @@ class _MyCoursesState extends State<MyCourses> {
                                         );
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppConstant.primaryColor3,
+                                        backgroundColor: AppConstant.secondaryColorLight,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),

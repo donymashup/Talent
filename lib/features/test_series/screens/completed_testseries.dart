@@ -50,110 +50,117 @@ class _CompletedTestSeriesScreenState extends State<CompletedTestSeriesScreen> {
               ? Center(
                   child: Text(errorMessage!,
                       style: const TextStyle(color: Colors.red)))
-              : ListView.builder(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: completedTestSeries.length,
-                  itemBuilder: (context, index) {
-                    var test = completedTestSeries[index];
-
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 12),
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [Colors.green, Colors.green],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 6,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
+              : completedTestSeries.isEmpty
+                  ? const Center(
+                      child: Text(
+                        "No attended tests available",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                       ),
-                      child: ListTile(
-                        contentPadding: const EdgeInsets.all(12), // Reduced padding
-                        // Removed isDense parameter as it is not valid for ListTile
-                        leading: const Icon(Icons.check_circle,
-                            size: 40, color: Colors.white),
-                        title: Flexible(
-                          child: Text(
-                            test.name ?? "Unnamed Test",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.white),
+                    )
+                  : ListView.builder(
+                      padding: const EdgeInsets.all(16),
+                      itemCount: completedTestSeries.length,
+                      itemBuilder: (context, index) {
+                        var test = completedTestSeries[index];
+
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 12),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Colors.green, Colors.green],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 6,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
                           ),
-                        ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8),
-                            _infoText(
-                                'Start Time', formatDate(test.start!), Colors.white70),
-                            _infoText(
-                                'End Time', formatDate(test.subTime!), Colors.white70),
-                            _infoText(
-                                'Duration', test.duration ?? "N/A", Colors.white),
-                          ],
-                        ),
-                        trailing: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      MainPerformanceScreen(testid: test.testid!)),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            foregroundColor: Colors.green,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.all(12), // Reduced padding
+                            // Removed isDense parameter as it is not valid for ListTile
+                            leading: const Icon(Icons.check_circle,
+                                size: 40, color: Colors.white),
+                            title: Flexible(
+                              child: Text(
+                                test.name ?? "Unnamed Test",
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: Colors.white),
+                              ),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 8),
+                                _infoText(
+                                    'Start Time', formatDate(test.start!), Colors.white70),
+                                _infoText(
+                                    'End Time', formatDate(test.subTime!), Colors.white70),
+                                _infoText(
+                                    'Duration', test.duration ?? "N/A", Colors.white),
+                              ],
+                            ),
+                            trailing: ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          MainPerformanceScreen(testid: test.testid!)),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.green,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              child: const Text("Review"),
                             ),
                           ),
-                          child: const Text("Review"),
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                        );
+                      },
+                    ),
     );
   }
 
   Widget _infoText(String label, String value, Color textColor) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 2),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start, // Aligns text properly
-      children: [
-        Icon(Icons.access_time, size: 14, color: textColor),
-        const SizedBox(width: 4),
-        Expanded(
-          child: RichText(
-            text: TextSpan(
-              style: TextStyle(fontSize: 14, color: textColor),
-              children: [
-                TextSpan(
-                  text: "$label: ",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                TextSpan(
-                  text: value,
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start, // Aligns text properly
+        children: [
+          Icon(Icons.access_time, size: 14, color: textColor),
+          const SizedBox(width: 4),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                style: TextStyle(fontSize: 14, color: textColor),
+                children: [
+                  TextSpan(
+                    text: "$label: ",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                    text: value,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
-}
+        ],
+      ),
+    );
+  }
 
   String formatDate(String inputDateTimeString) {
     DateTime dateTime = DateTime.parse(inputDateTimeString);

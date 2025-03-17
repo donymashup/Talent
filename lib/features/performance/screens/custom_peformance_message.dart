@@ -10,13 +10,14 @@ class CustomPeformanceMessage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppConstant.backgroundColor,
       appBar: AppBar(
-        title: const Text('Performance Index' ,style: TextStyle(fontSize: 20),),
+        backgroundColor: AppConstant.cardBackground,
+        title: const Text('Performance Index' ,style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
         leading: IconButton(
           onPressed: (){
             Navigator.pop(context);
           }, 
-          icon: Icon(Icons.arrow_back,size: 16,),
-          ),
+          icon: Icon(Icons.arrow_back_ios, size: 16),
+        ),
       ),
       body: SafeArea(
         child: Center(

@@ -8,6 +8,7 @@ import 'package:talent_app/models/chapter_list_model.dart';
 import 'package:talent_app/models/classs_list_model.dart';
 import 'package:talent_app/models/common_model.dart';
 import 'package:talent_app/models/material_model.dart';
+import 'package:talent_app/models/miscellaneous_folder_model.dart';
 import 'package:talent_app/models/practice_test_model.dart';
 import 'package:talent_app/models/subject_list_model.dart';
 import 'package:talent_app/models/user_subscriptions_model.dart';
@@ -243,6 +244,39 @@ class UserSubscriptionsServices {
     SharedPreferences pref = await SharedPreferences.getInstance();
     return pref.getString('userId');
   }
+  
+// function for fetching miscellaneous folders
+  Future<MiscellaneousFoldersModel?> getMiscellaneousFolders({
+    required BuildContext context,
+    required String courseId,
+    required String userId,
+  }) async {
+    try {
+      print("start");
+      var request = http.MultipartRequest(
+          'POST', Uri.parse(baseUrl + getMiscellaneousFoldersUrl));
+      request.fields.addAll({
+        'userid': userId,
+        'courseid': courseId,
+      });
 
-  // TODO: updateCourseStars courseid, rating, review
+      http.StreamedResponse response = await request.send();
+      if (response.statusCode == 200) {
+        var responseBody = await response.stream.bytesToString();
+        final jsonResponse = json.decode(responseBody);
+        //print("success");
+        // showSnackbar(context,'sucessfully fetch extra activities: ${response.statusCode}');
+        return MiscellaneousFoldersModel.fromJson(jsonResponse);
+      } else {
+        print("failure");
+        showSnackbar(context,
+            'failed to fetch extra activities: ${response.statusCode}');
+        return MiscellaneousFoldersModel();
+      }
+    } catch (e) {
+      print("failure");
+      showSnackbar(context, 'Error in fetching data activity: $e');
+      return null;
+    }
+  }
 }

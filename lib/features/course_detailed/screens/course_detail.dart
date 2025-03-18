@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:talent_app/constants/app_constants.dart';
@@ -77,15 +76,20 @@ class _AnimatedTabBarScreenState extends State<AnimatedTabBarScreen>
                 children: [
                   Hero(
                     tag: widget.heroImageTag,
-                    child: Image.network(
-                      widget.heroImage,
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20)),
+                      child: Image.network(
+                        widget.heroImage,
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -95,49 +99,63 @@ class _AnimatedTabBarScreenState extends State<AnimatedTabBarScreen>
                           children: [
                             Text(courseDetails?.details?.name ?? 'Course Name',
                                 style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w700)),
-                            const SizedBox(height: 8),
+                                    fontSize: 18, fontWeight: FontWeight.bold)),
+                            const SizedBox(height: 6),
                             Text(
                                 'Duration: ${courseDetails?.details?.duration ?? 'N/A'} Days',
-                                style: const TextStyle(fontSize: 15)),
+                                style: const TextStyle(fontSize: 14, color: Colors.grey)),
                           ],
                         ),
-                        (courseDetails?.details?.price == "0")
-                            ? const Text(
-                                "Free..",
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: "Poppins",
-                                  height: 1.2,
-                                ),
-                              )
-                            : Text(
-                                "\u{20B9} ${courseDetails?.details?.price} /-",
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: "Poppins",
-                                  height: 1.2,
-                                ),
-                              ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orangeAccent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            (courseDetails?.details?.price == "0")
+                                ? "Free"
+                                : "\u{20B9} ${courseDetails?.details?.price} /-",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  TabBar(
-                    controller: _tabController,
-                    indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppConstant.primaryColor,
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          spreadRadius: 2,
+                        ),
+                      ],
                     ),
-                    unselectedLabelColor: AppConstant.titlecolor,
-                    labelColor: AppConstant.cardBackground,
-                    tabs: const [
-                      Tab(text: "Overview"),
-                      Tab(text: "Modules"),
-                      Tab(text: "Review"),
-                    ],
-                    indicatorSize: TabBarIndicatorSize.tab,
+                    child: TabBar(
+                      controller: _tabController,
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: AppConstant.primaryColor,
+                      ),
+                      labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                      unselectedLabelColor: Colors.grey,
+                      labelColor: Colors.white,
+                      tabs: const [
+                        Tab(text: "Overview"),
+                        Tab(text: "Modules"),
+                        Tab(text: "Review"),
+                      ],
+                      indicatorSize: TabBarIndicatorSize.tab,
+                    ),
                   ),
                   Expanded(
                     child: TabBarView(

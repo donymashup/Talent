@@ -122,130 +122,125 @@ class _ClassListState extends State<ClassList> {
                     snapshot.data!.classes!.isEmpty) {
                   return const Center(child: Text("No classes found"));
                 }
-
-                return ListView.builder(
-                  padding: const EdgeInsets.only(bottom: 80),
-                  itemCount: snapshot.data!.classes!.length +
-                      1, // Add one for the Miscellaneous card
-                  itemBuilder: (context, index) {
-                    if (index == snapshot.data!.classes!.length) {
-                      // Add the Miscellaneous card at the end
-                      return GestureDetector(
+                return Wrap(
+                spacing: 8, // Horizontal spacing between cards
+                runSpacing: 8, // Vertical spacing between rows
+                children: [
+                  ...snapshot.data!.classes!.map((list) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width / 2 - 10, // Half-width for a grid layout
+                      child: GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MiscellaneousFolderScreen(
-                                      courseId: widget.courseId,
-                                    )),
+                              builder: (context) => SubjectList(
+                                classId: list.classId!,
+                                packageId: list.packageid!,
+                                batchId: widget.batchId,
+                                className: list.className!,
+                                classImage: list.classImage!,
+                              ),
+                            ),
                           );
                         },
                         child: Card(
-                          margin: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(8),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                             side: BorderSide(
-                              color: AppConstant.secondaryColorLight,
+                              color: AppConstant.primaryColor,
                               width: 1,
                             ),
                           ),
                           color: AppConstant.cardBackground,
                           elevation: 5,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Row(
-                              children: const [
-                                Icon(
-                                  Icons.folder,
-                                  size: 50,
-                                  color: AppConstant.secondaryColor,
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Text(
-                                    "Extra Lessons",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                                child: Hero(
+                                  tag: "classImage-${list.classId!}",
+                                  child: CachedNetworkImage(
+                                    imageUrl: list.classImage ?? "",
+                                    height: 120,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) => Shimmer.fromColors(
+                                      baseColor: Colors.grey[300]!,
+                                      highlightColor: Colors.grey[100]!,
+                                      child: Container(
+                                        height: 120,
+                                        width: double.infinity,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    errorWidget: (context, url, error) => Image.asset(
+                                      "assets/images/course1.png",
+                                      height: 120,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      list.className ?? "Course Name",
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    }
-
-                    final list = snapshot.data!.classes![index];
-
-                    return GestureDetector(
+                      ),
+                    );
+                  }).toList(),
+                  Container( // Wrap the GestureDetector inside a Container
+                    width: MediaQuery.of(context).size.width-15,
+                    child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SubjectList(
-                              classId: list.classId!,
-                              packageId: list.packageid!,
-                              batchId: widget.batchId,
-                              className: list.className!,
-                              classImage: list.classImage!,
-                            ),
+                            builder: (context) => MiscellaneousFolderScreen(courseId: widget.courseId),
                           ),
                         );
                       },
                       child: Card(
-                        margin: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(8),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                           side: BorderSide(
-                            color: AppConstant.primaryColor,
+                            color: AppConstant.secondaryColorLight,
                             width: 1,
                           ),
                         ),
                         color: AppConstant.cardBackground,
                         elevation: 5,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Row(
-                            children: [
-                              ClipRRect(
-                                borderRadius: const BorderRadius.horizontal(
-                                  left: Radius.circular(10),
-                                ),
-                                child: Hero(
-                                  tag: "classImage-${list.classId!}",
-                                  child: CachedNetworkImage(
-                                    imageUrl: list.classImage ?? "",
-                                    height: 100,
-                                    width: 150,
-                                    fit: BoxFit.cover,
-                                    placeholder: (context, url) =>
-                                        Shimmer.fromColors(
-                                      baseColor: Colors.grey[300]!,
-                                      highlightColor: Colors.grey[100]!,
-                                      child: Container(
-                                        height: 100,
-                                        width: 150,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    errorWidget: (context, url, error) =>
-                                        Image.asset(
-                                      "assets/images/course1.png",
-                                      height: 100,
-                                      width: 150,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
+                            children: const [
+                              Icon(Icons.folder, size: 50, color: AppConstant.secondaryColor),
+                              SizedBox(width: 10),
                               Expanded(
                                 child: Text(
-                                  list.className ?? "Course Name",
-                                  style: const TextStyle(
-                                    fontSize: 15,
+                                  "Miscellaneous Contents",
+                                  style: TextStyle(
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -254,9 +249,10 @@ class _ClassListState extends State<ClassList> {
                           ),
                         ),
                       ),
-                    );
-                  },
-                );
+                    ),
+                  ),
+                ],
+              );
               },
             ),
           ),

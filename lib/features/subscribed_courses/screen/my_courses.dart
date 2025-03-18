@@ -186,7 +186,7 @@ class _MyCoursesState extends State<MyCourses> {
                                               BorderRadius.circular(8),
                                         ),
                                       ),
-                                      child: const Text("Begin Now",style: TextStyle(color: Colors.white),),
+                                      child: const Text("Explore",style: TextStyle(color: Colors.white),),
                                     ),
                                   ],
                                 ),

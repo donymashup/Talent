@@ -36,7 +36,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       imagePath: 'assets/images/O4.png',
       title: 'Embark on Your Learning Adventure',
       description:
-          'Explore Interactive Lessons, Quizzes, And Multimedia Content To Enhance Your Understanding.',
+          'Explore Interactive Lessons, Quizzes To Enhance Your Understanding.',
     ),
   ];
 

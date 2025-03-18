@@ -25,7 +25,7 @@ class _EnrollButtonState extends State<EnrollButton> {
         Icons.arrow_forward,
         color: AppConstant.primaryColor,
       ),
-      activeColor: Color(0xFFEE3239),
+      activeColor: AppConstant.secondaryColorLight,
       isFinished: isFinished,
       onWaitingProcess: () {
         Future.delayed(Duration(seconds: 1), () {

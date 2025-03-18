@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lucide_icons/lucide_icons.dart';
@@ -14,117 +15,104 @@ class ClassesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Card(
-        child: ListView.builder(
-          itemCount: courseDetailsModel.chapters?.length ?? 0,
-          itemBuilder: (context, index) {
-            final chapter = courseDetailsModel.chapters![index];
+      child: ListView.builder(
+        itemCount: courseDetailsModel.chapters?.length ?? 0,
+        itemBuilder: (context, index) {
+          final chapter = courseDetailsModel.chapters![index];
 
-            return Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
-              child: Card(
-                margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5)),
-                color: AppConstant.cardBackground,
-                elevation: 4,
-                child: ExpansionTile(
-                  title: Row(
-                    children: [
-                      Icon(LucideIcons.bookOpen, color: Colors.teal),
-                      SizedBox(width: 10),
-                      Flexible(
-                        child: Text(
-                          chapter.chapName ?? "No Name",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ],
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.only(left: 35.0),
-                    child: Row(
-                      children: [
-                        Text(chapter.className ?? "No Class",
-                            style: TextStyle(color: Colors.grey)),
-                        SizedBox(width: 10),
-                        Text(chapter.subjectName ?? "No Subject",
-                            style: TextStyle(color: Colors.grey)),
-                      ],
-                    ),
-                  ),
-                  children: [
-                    _buildListSection('Videos', chapter.contents?.videos ?? [],
-                        LucideIcons.video, Colors.redAccent),
-                    Divider(),
-                    _buildListSection('PDFs', chapter.contents?.pdf ?? [],
-                        LucideIcons.file, Colors.blueAccent),
-                    Divider(),
-                    _buildListSection('Tests', chapter.contents?.test ?? [],
-                        LucideIcons.checkSquare, Colors.green),
-                  ],
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: Card(
+              margin: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              color: Colors.white,
+              elevation: 5,
+              child: ExpansionTile(
+                leading: Icon(LucideIcons.book, color: Colors.orangeAccent),
+                title: Text(
+                  chapter.chapName ?? "No Name",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87),
                 ),
+                subtitle: Text(
+                  '${chapter.className ?? "No Class"} | ${chapter.subjectName ?? "No Subject"}',
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                ),
+                children: [
+                  Container(
+                    color: Colors.deepPurple.shade50,
+                    child: _buildListSection('Videos', chapter.contents?.videos ?? [],
+                        LucideIcons.playCircle, Colors.deepPurpleAccent),
+                  ),
+                  Divider(),
+                  Container(
+                    color: Colors.blue.shade50,
+                    child: _buildListSection('PDFs', chapter.contents?.pdf ?? [],
+                        LucideIcons.fileText, Colors.blue),
+                  ),
+                  Divider(),
+                  Container(
+                    color: Colors.green.shade50,
+                    child: _buildListSection('Tests', chapter.contents?.test ?? [],
+                        LucideIcons.checkCircle, Colors.green),
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
   Widget _buildListSection(
       String title, List<ContentItem> items, IconData icon, Color iconColor) {
-    return ListTile(
-      title: Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: iconColor),
-          SizedBox(width: 8),
-          Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-        ],
-      ),
-      subtitle: Padding(
-        padding: const EdgeInsets.only(left: 35.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: items
-              .map((item) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        if (title == "Tests") {
-                          // Navigate only for Tests
-                          Get.to(() => QuizInfo());
-                        }
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Flexible(child: Text(item.contentName ?? "No Name")),
-                          item.status == 'free'
-                              ? Icon(Icons.play_circle_outline,
-                                  size: 20, color: Colors.green)
-                              : Icon(Icons.lock_outline,
-                                  size: 20, color: Colors.grey),
-                          // item.status =='free' ? 'free' : 'paid',
-                          // Obx(() {
-                          // final controller =
-                          //   Get.find<IsSubscribedController>();
-                          // return controller.isSubscribed.value
-                          //   ? (item.isPaid
-                          //     ? Icon(Icons.lock_outline,
-                          //       size: 20, color: Colors.grey)
-                          //     : Icon(Icons.play_circle_outline,
-                          //       size: 20, color: Colors.green))
-                          //   : Icon(Icons.lock_outline,
-                          //     size: 20, color: Colors.grey);
-                          // }),
-                        ],
+          Row(
+            children: [
+              Icon(icon, color: iconColor, size: 22),
+              SizedBox(width: 8),
+              Text(title,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.black87)),
+            ],
+          ),
+          SizedBox(height: 6),
+          Column(
+            children: items
+                .map((item) => Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      child: ListTile(
+                        tileColor: iconColor.withOpacity(0.1),
+                        title: Text(
+                          item.contentName ?? "No Name",
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        trailing: item.status == 'free'
+                            ? Icon(Icons.play_circle_fill,
+                                size: 24, color: Colors.green)
+                            : Icon(Icons.lock, size: 24, color: Colors.red),
+                        onTap: () {
+                          if (title == "Tests") {
+                            Get.to(() => QuizInfo());
+                          }
+                        },
                       ),
-                    ),
-                  ))
-              .toList(),
-        ),
+                    ))
+                .toList(),
+          ),
+        ],
       ),
     );
   }

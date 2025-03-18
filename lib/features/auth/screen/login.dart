@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 50),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: Image.asset(

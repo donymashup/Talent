@@ -130,90 +130,100 @@ class _SubjectListState extends State<SubjectList> {
                 snapshot.data!.subjects!.isEmpty) {
               return const Center(child: Text("No subjects found"));
             }
-
             return CustomScrollView(
               slivers: [
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      final subject = snapshot.data!.subjects![index];
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ChapterList(
-                                sublectImage: subject.subjectImage!,
-                                subjectName: subject.subjectName!,
-                                classId: widget.classId,
-                                packageId: subject.packageid!,
-                                batchId: widget.batchId,
-                                subjectId: subject.subjectId!,
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    child: Wrap(
+                      spacing: 8, // Horizontal spacing
+                      runSpacing: 8, // Vertical spacing
+                      children: snapshot.data!.subjects!.map((subject) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width / 2 - 15, // Grid layout
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ChapterList(
+                                    sublectImage: subject.subjectImage!,
+                                    subjectName: subject.subjectName!,
+                                    classId: widget.classId,
+                                    packageId: subject.packageid!,
+                                    batchId: widget.batchId,
+                                    subjectId: subject.subjectId!,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Card(
+                              color: Colors.white,
+                              margin: const EdgeInsets.all(8),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                side: BorderSide(color: Colors.grey.shade300),
                               ),
-                            ),
-                          );
-                        },
-                        child: Card(
-                          margin: const EdgeInsets.all(10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            side: BorderSide(color: Colors.grey.shade300),
-                          ),
-                          elevation: 4,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Hero(
-                                    tag: "subjectImage-${subject.subjectId}",
-                                    child: CachedNetworkImage(
-                                      imageUrl: subject.subjectImage ?? "",
-                                      width: 110,
-                                      height: 80,
-                                      fit: BoxFit.cover,
-                                      placeholder: (context, url) =>
-                                          Shimmer.fromColors(
-                                        baseColor: Colors.grey[300]!,
-                                        highlightColor: Colors.grey[100]!,
-                                        child: Container(
-                                          width: 110,
-                                          height: 80,
-                                          color: Colors.white,
+                              elevation: 4,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Hero(
+                                        tag: "subjectImage-${subject.subjectId}",
+                                        child: CachedNetworkImage(
+                                          imageUrl: subject.subjectImage ?? "",
+                                          width: double.infinity,
+                                          height: 100,
+                                          fit: BoxFit.cover,
+                                          placeholder: (context, url) => Shimmer.fromColors(
+                                            baseColor: Colors.grey[300]!,
+                                            highlightColor: Colors.grey[100]!,
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 100,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          errorWidget: (context, url, error) =>
+                                              Image.asset(
+                                            'assets/images/onboarding1.jpg',
+                                            width: double.infinity,
+                                            height: 100,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
-                                      errorWidget: (context, url, error) =>
-                                          Image.asset(
-                                        'assets/images/onboarding1.jpg',
-                                        width: 110,
-                                        height: 80,
-                                        fit: BoxFit.cover,
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: Text(
+                                        subject.subjectName ?? "Subject",
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                                const SizedBox(width: 12),
-                                Expanded(
-                                  child: Text(
-                                    subject.subjectName ?? "Subject",
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                    childCount: snapshot.data!.subjects!.length,
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ],
             );
+
           },
         ),
       ),

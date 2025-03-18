@@ -28,7 +28,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     fetchUserDetails();
   }
 
-  /// Fetch user details from API and update UI
   Future<void> fetchUserDetails() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("userId");
@@ -40,8 +39,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       );
 
       if (details != null) {
-        print("Fetched Image URL from API: ${details.user?.image}");
-
         setState(() {
           userDetails = details;
           isLoading = false;
@@ -49,12 +46,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       } else {
         setState(() => isLoading = false);
       }
-    } else {
-      print("User ID not found in SharedPreferences");
     }
   }
 
-  /// Pick an image from the gallery and upload it
   Future<void> _pickImage() async {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
@@ -83,19 +77,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           });
         }
       }
-
       setState(() {
         isUploading = false;
       });
     }
   }
 
-  /// Update user password
   Future<void> updatePassword() async {
-    setState(() {
-      isUpdatingPassword = true;
-    });
-
+    setState(() => isUpdatingPassword = true);
     if (passwordController.text.isNotEmpty) {
       await ProfileService().updatePassword(
         password: passwordController.text,
@@ -105,192 +94,117 @@ class _ProfileScreenState extends State<ProfileScreen> {
     } else {
       showSnackbar(context, "Password is empty");
     }
-
     setState(() {
       passwordController.clear();
       isUpdatingPassword = false;
     });
   }
 
-  /// Show enlarged profile image in a popup
-  void _showFullImage() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image(
-              image: _image != null
-                  ? FileImage(_image!)
-                  : (userDetails?.user?.image != null &&
-                          userDetails!.user!.image!.isNotEmpty
-                      ? NetworkImage(userDetails!.user!.image!)
-                      : AssetImage('assets/images/default_profile.png')) as ImageProvider,
-              fit: BoxFit.cover,
-            ),
-          ),
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new,size: 16, color: Colors.black,),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          "My Profile",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
+        leading:IconButton(
+            icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
+            onPressed: () => Navigator.pop(context),
           ),
-        ),
-        backgroundColor: AppConstant.backgroundColor,
+        title: Text("My Profile", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white)),
+        backgroundColor:Colors.white,
         actions: [
           IconButton(
             icon: Icon(Icons.refresh, color: Colors.white),
-            onPressed: fetchUserDetails, // Refresh profile data
+            onPressed: fetchUserDetails,
           ),
         ],
       ),
-      backgroundColor: AppConstant.backgroundColor,
+      backgroundColor: Colors.grey[200],
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 50),
-                    Stack(
-                      clipBehavior: Clip.none,
-                      alignment: Alignment.topCenter,
-                      children: [
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
+              padding: EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 80,
+                        backgroundImage: _image != null
+                            ? FileImage(_image!)
+                            : (userDetails?.user?.image != null && userDetails!.user!.image!.isNotEmpty
+                                ? NetworkImage(userDetails!.user!.image!)
+                                : AssetImage('assets/images/default_profile.png')) as ImageProvider,
+                      ),
+                      if (isUploading)
+                        Positioned.fill(
+                          child: CircularProgressIndicator(color: Colors.white),
+                        ),
+                    ],
+                  ),
+                  SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: _pickImage,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppConstant.primaryColor,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      minimumSize: Size(double.infinity, 50),
+                    ),
+                    child: Text("Upload Profile Picture", style: TextStyle(color: Colors.white)),
+                  ),
+                  SizedBox(height: 20),
+                  Card(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    elevation: 4,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Personal Details", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                          Divider(),
+                          ListTile(
+                            leading: Icon(Icons.person, color: AppConstant.primaryColor),
+                            title: Text(userDetails?.user?.firstName ?? "Loading..."),
                           ),
-                          color: AppConstant.cardBackground,
-                          shadowColor: AppConstant.shadowColor,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              top: 120,
-                              left: 20,
-                              right: 20,
-                              bottom: 20,
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ListTile(
-                                  leading: Icon(Icons.person, color: AppConstant.primaryColor),
-                                  title: Text(userDetails?.user?.firstName ?? "Loading..."),
-                                ),
-                                ListTile(
-                                  leading: Icon(Icons.phone, color: AppConstant.primaryColor),
-                                  title: Text(userDetails?.user?.phone ?? "Loading..."),
-                                ),
-                                ListTile(
-                                  leading: Icon(Icons.email, color: AppConstant.primaryColor),
-                                  title: Text(userDetails?.user?.email ?? "Loading..."),
-                                ),
-                              ],
-                            ),
+                          ListTile(
+                            leading: Icon(Icons.phone, color: AppConstant.primaryColor),
+                            title: Text(userDetails?.user?.phone ?? "Loading..."),
                           ),
-                        ),
-                        Positioned(
-                          top: -60,
-                          child: GestureDetector(
-                            onTap: _showFullImage, // Tap to enlarge instead of changing
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                CircleAvatar(
-                                  radius: 80,
-                                  backgroundImage: _image != null
-                                      ? FileImage(_image!)
-                                      : (userDetails?.user?.image != null &&
-                                              userDetails!.user!.image!.isNotEmpty
-                                          ? NetworkImage(userDetails!.user!.image!)
-                                          : AssetImage('assets/images/default_profile.png')) as ImageProvider,
-                                ),
-                                if (isUploading)
-                                  Positioned.fill(
-                                    child: CircularProgressIndicator(color: Colors.white),
-                                  ),
-                              ],
-                            ),
+                          ListTile(
+                            leading: Icon(Icons.email, color: AppConstant.primaryColor),
+                            title: Text(userDetails?.user?.email ?? "Loading..."),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-
-                    /// Upload Image Button
-                    ElevatedButton(
-                      onPressed: _pickImage,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppConstant.primaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        minimumSize: const Size(double.infinity, 50),
-                      ),
-                      child: const Text(
-                        'Upload A Profile Picture',
-                        style: TextStyle(color: Colors.white),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 40),
-
-                    /// Password Input Field
-                    TextField(
-                      obscureText: true,
-                      controller: passwordController,
-                      decoration: InputDecoration(
-                        labelText: 'Set New Password For Web Portal',
-                        labelStyle: TextStyle(color: AppConstant.titlecolor),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppConstant.strokeColor),
-                          borderRadius: BorderRadius.circular(17),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppConstant.primaryColor),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                      ),
+                  ),
+                  SizedBox(height: 20),
+                  TextField(
+                    obscureText: true,
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      labelText: 'Set New Password',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                     ),
-                    const SizedBox(height: 10),
-
-                    /// Update Password Button
-                    ElevatedButton(
-                      onPressed: isUpdatingPassword ? null : updatePassword,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppConstant.primaryColor2,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        minimumSize: const Size(double.infinity, 50),
-                      ),
-                      child: isUpdatingPassword
-                          ? CircularProgressIndicator(color: Colors.white)
-                          : const Text(
-                              'Update Password',
-                              style: TextStyle(color: Colors.white),
-                            ),
+                  ),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: isUpdatingPassword ? null : updatePassword,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppConstant.primaryColor2,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      minimumSize: Size(double.infinity, 50),
                     ),
-                  ],
-                ),
+                    child: isUpdatingPassword
+                        ? CircularProgressIndicator(color: Colors.white)
+                        : Text("Update Password", style: TextStyle(color: Colors.white)),
+                  ),
+                ],
               ),
             ),
     );
   }
 }
+

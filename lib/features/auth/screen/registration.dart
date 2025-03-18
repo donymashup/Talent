@@ -3,6 +3,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 import 'package:talent_app/constants/app_constants.dart';
 import 'package:talent_app/features/auth/screen/complete_registration.dart';
+import 'package:talent_app/features/auth/screen/login.dart';
 import 'package:talent_app/features/auth/services/login_service.dart';
 import 'package:talent_app/features/auth/widgets/custom_button.dart';
 import 'package:talent_app/features/auth/widgets/custom_textfield.dart';
@@ -76,6 +77,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -84,31 +86,29 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 Opacity(
                   opacity: 0.5,
                   child: wave_widget(
-                      height: MediaQuery.of(context).size.height * 0.35),
+                      height: MediaQuery.of(context).size.height * 0.25),
                 ),
-                wave_widget(height: MediaQuery.of(context).size.height * 0.325),
+                wave_widget(height: MediaQuery.of(context).size.height * 0.225),
                 Positioned(
                   top: MediaQuery.of(context).size.height * 0.05,
                   left: 0,
                   right: 0,
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 100),
-                    child: Center(
-                      child: Text(
-                        'WE WOULD LIKE TO KNOW MORE ABOUT YOU',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: AppConstant.cardBackground,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                    child: Text(
+                      'Tell Us a Bit About Yourself',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: AppConstant.cardBackground,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),    
                     ),
                   ),
                 ),
-              ],
+              ], 
             ),
-            const SizedBox(height: 20),
+           // const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Form(
@@ -393,11 +393,33 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    //const SizedBox(height: 40),
+                    const SizedBox(height: 5),
+                    Center(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Login()),
+                          );
+                        },
+                        child: const Text(
+                          "Already have an account? Sign In",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black, // Customize color
+                          ),
+                        ),
+                      ),
+                    )
+                    
                   ],
                 ),
               ),
             ),
+            
           ],
         ),
       ),

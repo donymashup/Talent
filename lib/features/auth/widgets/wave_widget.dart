@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talent_app/constants/app_constants.dart';
 import 'package:talent_app/features/auth/widgets/wave_clipper.dart';
 
 class wave_widget extends StatelessWidget {
@@ -12,10 +13,10 @@ class wave_widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: WaveClipper(),
+      clipper: SingleWaveClipper(),
       child: Container(
         height: height,
-        color: Colors.deepPurple,
+        color: AppConstant.primaryColor,
       ),
     );
   }

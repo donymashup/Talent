@@ -92,10 +92,10 @@ class _LoginState extends State<Login> {
                   children: [
                     const SizedBox(height: 40),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
+                      padding: const EdgeInsets.only(bottom: 0.0),
                       child: Image.asset(
                         'assets/images/talentlogo.png', // Replace with your logo asset path
-                        height: 75, // Adjust the height as needed
+                        height: 55, // Adjust the height as needed
                       ),
                     ),
                     // const Text(
@@ -122,7 +122,7 @@ class _LoginState extends State<Login> {
                         height: 1.5,
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
@@ -213,7 +213,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
 
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 5),
                     Visibility(
                       visible: _isRegEnabled,
                       child: TextButton(

@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: Obx(() => CustomAppBar(appbarTitle: "Hello, ${userController.username}")),
       ),
-      drawer: const DrawerScreen(),
+      drawer:  DrawerScreen(),
       body: Container(
         color: AppConstant.backgroundColor,
         child: CustomScrollView(

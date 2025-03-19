@@ -69,47 +69,73 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
           : _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: isLoading
           ? null
-          : CurvedNavigationBar(
-              backgroundColor: AppConstant.backgroundColor,
-              color: AppConstant.primaryColorLight,
-              animationDuration: const Duration(milliseconds: 300),
-              height: 60,
-              index: _selectedIndex,
-              onTap: _onItemTapped,
-              items: <CurvedNavigationBarItem>[
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.home, size: 30, color: _selectedIndex == 0 ? AppConstant.secondaryColor : Colors.white),
-                  label: 'Home',
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: _selectedIndex == 0 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+          : SafeArea(
+              child: CurvedNavigationBar(
+                backgroundColor: AppConstant.backgroundColor,
+                color: AppConstant.primaryColorLight,
+                animationDuration: const Duration(milliseconds: 300),
+                height: 60,
+                index: _selectedIndex,
+                onTap: _onItemTapped,
+                items: <CurvedNavigationBarItem>[
+                  CurvedNavigationBarItem(
+                    child: Icon(Icons.home,
+                        size: 30,
+                        color: _selectedIndex == 0
+                            ? AppConstant.secondaryColor
+                            : Colors.white),
+                    label: 'Home',
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: _selectedIndex == 0
+                          ? AppConstant.cardBackground
+                          : AppConstant.secondaryColor,
+                    ),
                   ),
-                ),
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.school_outlined, size: 30, color: _selectedIndex == 1 ? AppConstant.secondaryColor : Colors.white),
-                  label: 'My Courses',
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: _selectedIndex == 1 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+                  CurvedNavigationBarItem(
+                    child: Icon(Icons.school_outlined,
+                        size: 30,
+                        color: _selectedIndex == 1
+                            ? AppConstant.secondaryColor
+                            : Colors.white),
+                    label: 'My Courses',
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: _selectedIndex == 1
+                          ? AppConstant.cardBackground
+                          : AppConstant.secondaryColor,
+                    ),
                   ),
-                ),
-                CurvedNavigationBarItem(
-                  child: Icon(Icons.live_tv, size: 30, color: _selectedIndex == 2 ? AppConstant.secondaryColor : Colors.white),
-                  label: 'Live',
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: _selectedIndex == 2 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+                  CurvedNavigationBarItem(
+                    child: Icon(Icons.live_tv,
+                        size: 30,
+                        color: _selectedIndex == 2
+                            ? AppConstant.secondaryColor
+                            : Colors.white),
+                    label: 'Live',
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: _selectedIndex == 2
+                          ? AppConstant.cardBackground
+                          : AppConstant.secondaryColor,
+                    ),
                   ),
-                ),
-                CurvedNavigationBarItem(
-                  child: Icon(FluentIcons.clipboard_task_list_16_regular, size: 30, color: _selectedIndex == 3 ? AppConstant.secondaryColor : Colors.white),
-                  label: 'Test Series',
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: _selectedIndex == 3 ? AppConstant.cardBackground : AppConstant.secondaryColor,
+                  CurvedNavigationBarItem(
+                    child: Icon(FluentIcons.clipboard_task_list_16_regular,
+                        size: 30,
+                        color: _selectedIndex == 3
+                            ? AppConstant.secondaryColor
+                            : Colors.white),
+                    label: 'Test Series',
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: _selectedIndex == 3
+                          ? AppConstant.cardBackground
+                          : AppConstant.secondaryColor,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
     );
   }

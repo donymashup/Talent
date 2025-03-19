@@ -105,10 +105,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         leading:IconButton(
-            icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
+            icon: Icon(Icons.arrow_back_ios_new,),
             onPressed: () => Navigator.pop(context),
           ),
-        title: Text("My Profile", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,color: Colors.white)),
+        title: Text("My Profile", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,)),
         backgroundColor:Colors.white,
         actions: [
           IconButton(
@@ -117,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(

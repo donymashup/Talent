@@ -93,7 +93,7 @@ class _VideoListCardWidgetState extends State<VideoListCardWidget> {
         ),
       ),
     );
-    ;
+  
   }
 
   String getDuration({minutesString = String}) {

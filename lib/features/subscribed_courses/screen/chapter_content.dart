@@ -43,89 +43,87 @@ class _ChapterContentsState extends State<ChapterContents>
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppConstant.backgroundColor,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new,size: 16, color: Colors.black,),
-          onPressed: () => Navigator.pop(context),
-        ),
 
-
-        title: Text(widget.chapterName,
-            style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: AppConstant.backgroundColor,
-        bottom: TabBar(
-          controller: _tabController,
-          indicatorColor: AppConstant.primaryColor,
-          labelColor: AppConstant.primaryColor,
-          unselectedLabelColor: AppConstant.titlecolor,
-          tabs: const [
-            Tab(text: "Videos"),
-            Tab(text: "Materials"),
-            Tab(text: "Practice Tests"),
-          ],
-        ),
+ @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: AppConstant.backgroundColor,
+    appBar: AppBar(
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back_ios_new, size: 16, color: Colors.black),
+        onPressed: () => Navigator.pop(context),
       ),
-      body: Column(
-        children: [
-          Hero(
-            tag: "chapterImage-${widget.chapterId}",
+      title: Text(widget.chapterName, style: const TextStyle(fontWeight: FontWeight.bold)),
+      backgroundColor: AppConstant.backgroundColor,
+      bottom: TabBar(
+        controller: _tabController,
+        indicatorColor: AppConstant.primaryColor,
+        labelColor: AppConstant.primaryColor,
+        unselectedLabelColor: AppConstant.titlecolor,
+        tabs: const [
+          Tab(text: "Videos"),
+          Tab(text: "Materials"),
+          Tab(text: "Practice Tests"),
+        ],
+      ),
+    ),
+    body: Column(
+      children: [
+        Hero(
+          tag: "chapterImage-${widget.chapterId}",
+          child: AspectRatio(  // ✅ Ensures image takes a fixed height
+            aspectRatio: 16 / 9,  // Adjust for proper aspect ratio
             child: CachedNetworkImage(
               imageUrl: widget.chapterImage,
               fit: BoxFit.cover,
               placeholder: (context, url) => Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
                 highlightColor: Colors.grey[100]!,
-                child: Container(
-                  color: Colors.white,
-                ),
+                child: Container(color: Colors.white),
               ),
             ),
           ),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: [
-                VideoSectionWidget(
-                  icon: Icons.video_library,
-                  title: "Videos",
-                  fetchFunction: UserSubscriptionsServices().getChapterVideos(
-                    context: context,
-                    chapterId: widget.chapterId,
-                    batchId: widget.batchId,
-                    packageId: widget.packageId,
-                  ),
+        ),
+        Expanded(  // ✅ Ensures TabBarView takes only the remaining space
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              VideoSectionWidget(
+                icon: Icons.video_library,
+                title: "Videos",
+                fetchFunction: UserSubscriptionsServices().getChapterVideos(
+                  context: context,
+                  chapterId: widget.chapterId,
+                  batchId: widget.batchId,
+                  packageId: widget.packageId,
                 ),
-                MaterialsSectionWidget(
-                  icon: Icons.book,
-                  title: "Study Materials",
-                  fetchFunction:
-                      UserSubscriptionsServices().getChapterMaterials(
-                    context: context,
-                    chapterId: widget.chapterId,
-                    batchId: widget.batchId,
-                    packageId: widget.packageId,
-                  ),
+              ),
+              MaterialsSectionWidget(
+                icon: Icons.book,
+                title: "Study Materials",
+                fetchFunction: UserSubscriptionsServices().getChapterMaterials(
+                  context: context,
+                  chapterId: widget.chapterId,
+                  batchId: widget.batchId,
+                  packageId: widget.packageId,
                 ),
-                PracticeTestSection(
-                  icon: Icons.quiz,
-                  title: "Practice tests",
-                  fetchFunction:
-                      UserSubscriptionsServices().getChapterPracticeTests(
-                    context: context,
-                    chapterId: widget.chapterId,
-                    batchId: widget.batchId,
-                    packageId: widget.packageId,
-                  ),
+              ),
+              PracticeTestSection(
+                icon: Icons.quiz,
+                title: "Practice Tests",
+                fetchFunction: UserSubscriptionsServices().getChapterPracticeTests(
+                  context: context,
+                  chapterId: widget.chapterId,
+                  batchId: widget.batchId,
+                  packageId: widget.packageId,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 }

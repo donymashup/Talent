@@ -4,6 +4,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:talent_app/features/subscribed_courses/screen/chapterVideoPlayerScreen.dart';
 import 'package:talent_app/models/video_model.dart';
 
+
 class VideoSectionWidget extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -20,29 +21,31 @@ class VideoSectionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildSectionHeader(),
-          FutureBuilder<VideoModel?>(
-            future: fetchFunction,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                return Center(child: Text("Error: ${snapshot.error}"));
-              } else if (!snapshot.hasData ||
-                  snapshot.data?.videos?.isEmpty == true) {
-                return const Text("No Data Available",
-                    style: TextStyle(color: Colors.grey));
-              }
-
-              return _buildVideoList(
-                  snapshot.data!.videos!, context, snapshot.data);
-            },
-          ),
-          const SizedBox(height: 12), // Space after section
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSectionHeader(),
+            FutureBuilder<VideoModel?>(
+              future: fetchFunction,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text("Error: ${snapshot.error}"));
+                } else if (!snapshot.hasData ||
+                    snapshot.data?.videos?.isEmpty == true) {
+                  return const Text("No Data Available",
+                      style: TextStyle(color: Colors.grey));
+                }
+        
+                return _buildVideoList(
+                    snapshot.data!.videos!, context, snapshot.data);
+              },
+            ),
+            const SizedBox(height: 12), // Space after section
+          ],
+        ),
       ),
     );
   }
@@ -109,7 +112,7 @@ class VideoSectionWidget extends StatelessWidget {
                                   highlightColor: Colors.grey[100]!,
                                   child: Container(
                                     width: double.infinity,
-                                    height: 200, // Adjust height as needed
+                                    height: 100, // Adjust height as needed
                                     color: Colors.white,
                                   ),
                                 ),

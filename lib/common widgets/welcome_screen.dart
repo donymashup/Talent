@@ -93,7 +93,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   const SizedBox(height: 20.0),
                   const Text(
-                    'Welcome To Alpha',
+                    'Welcome To Talent International Academy',
                     style: TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30.0),
                     child: Text(
-                      'Learn something new every day. Start your learning journey with Alpha Academy.',
+                      'Learn something new every day. Start your learning journey with Talent International Academy.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.0,

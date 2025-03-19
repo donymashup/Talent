@@ -1,8 +1,8 @@
-const webUrl = 'https://alphaacademyonline.in/';
+const webUrl = 'https://talentonline.in/';
 // const baseUrl = 'https://alphaacademyonline.in/api/';
 //const baseUrl = 'https://demo.etcweb.in/api/';
-//const baseUrl = 'https://talentonline.in/api/';
-const baseUrl = 'https://alphaacademyonline.in/api/';
+const baseUrl = 'https://talentonline.in/api/';
+// const baseUrl = 'https://alphaacademyonline.in/api/';
 const loginUrl = 'userlogin';
 const userDetailsUrl = 'getUserDetails';
 const availableCourseUrl = 'getAvailableCourses';
@@ -25,7 +25,8 @@ const isRegistrationEnabledUrl = 'isRegistrationEnabled';
 const sendOtpUrl = 'sendOtp';
 const getNotificationsUrl = 'getNotifications';
 const getMiscellaneousFoldersUrl = 'getMiscellaneousFolders';
-
+const getRazorPayKeyUrl = 'getRazorPayKey';
+const getOpenAiKeyUrl = 'getOpenAiKey';
 
 const registerUserUrl = 'registerUser';
 const verifyPromoCodeUrl = 'verifyPromoCode';

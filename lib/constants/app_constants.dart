@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class AppConstant {
-  static const appName = "Alpha Entrance Academy";
+  static const appName = "Talent International Academy";
   static const backgroundColor2 = Color.fromARGB(255, 250, 246, 247);
   //static const primaryColor = Color(0xFFD70000);
   static const primaryColor = Color(0xFFEF7B00); // Orange
-  static final primaryColorLight = Color(0xFFEF7B00).withOpacity(0.8 ); // Light Orange
+  static final primaryColorLight =
+      Color(0xFFEF7B00).withOpacity(0.8); // Light Orange
 
   static const secondaryColor = Color(0xFF2F2484); //dart blue
-  static final secondaryColorLight = Color(0xFF2F2484).withOpacity(0.7); // Light dart blue
+  static final secondaryColorLight =
+      Color(0xFF2F2484).withOpacity(0.7); // Light dart blue
 
   static const lightGradient = Color.fromARGB(255, 214, 63, 69);
   static const darkGradient = Color.fromARGB(255, 138, 3, 3);
@@ -30,15 +32,11 @@ class AppConstant {
   static const bluedot = Color(0xFF005DA3);
   static const yellowdot = Color(0xFFFFD700);
 
-  static const OPENAI_API_KEY = " ";
-
-  // Razorpay Api
-
-  static const String RazorPay_key_id = "rzp_live_crfFcS32Hjr52m";
-  //
+  static String OPENAI_API_KEY = "";
+  static String RazorPay_key_id = "";
 
   static const Gradient redWhiteGradient = LinearGradient(
-    colors: [AppConstant.cardBackground,AppConstant.cardBackground],
+    colors: [AppConstant.cardBackground, AppConstant.cardBackground],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );

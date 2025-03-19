@@ -33,8 +33,8 @@ class _ChatGptScreenState extends State<ChatGptScreen> {
 
   final ChatUser _gptChatUser = ChatUser(
     id: '2',
-    firstName: 'Alpha',
-    lastName: 'Genius',
+    firstName: 'Talent',
+    lastName: 'Academy',
   );
 
   List<ChatMessage> _messages = <ChatMessage>[];
@@ -52,11 +52,12 @@ class _ChatGptScreenState extends State<ChatGptScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Talent Genius Chatbot',
+          'Talent Chatbot',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, size: 16, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios_new,
+              size: 16, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },

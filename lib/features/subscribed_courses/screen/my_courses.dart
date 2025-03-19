@@ -29,7 +29,7 @@ class _MyCoursesState extends State<MyCourses> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(appbarTitle: "My Subscribed Courses"),
-      drawer: const DrawerScreen(),
+      drawer:  DrawerScreen(),
       backgroundColor: AppConstant.backgroundColor,
       body: SafeArea(
         child: FutureBuilder<UserSubscriptionsModel?>(

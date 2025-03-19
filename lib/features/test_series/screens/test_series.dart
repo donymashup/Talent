@@ -12,7 +12,7 @@ class TestSeriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(appbarTitle: "Test Series"),
-      drawer: const DrawerScreen(),
+      drawer: DrawerScreen(),
       backgroundColor: AppConstant.backgroundColor,
       body: Container(
         color: AppConstant.backgroundColor, // Set the desired background color here

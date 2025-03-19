@@ -66,7 +66,8 @@ class _MyCoursesState extends State<MyCourses> {
                     );
                   },
                   child: Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -74,9 +75,8 @@ class _MyCoursesState extends State<MyCourses> {
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white
-                      ),
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.white),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -88,16 +88,17 @@ class _MyCoursesState extends State<MyCourses> {
                               borderRadius: BorderRadius.circular(10),
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    course.courseDetails?.courseListImage ?? "",
-                                width: 100,
-                                height: 100,
+                                    course.courseDetails?.courseListImage ??
+                                        "",
+                                width: 140, // Increased width
+                                height: 100, // Adjusted height
                                 fit: BoxFit.cover,
                                 placeholder: (context, url) =>
                                     Shimmer.fromColors(
                                   baseColor: Colors.grey[300]!,
                                   highlightColor: Colors.grey[100]!,
                                   child: Container(
-                                    width: 100,
+                                    width: 140,
                                     height: 100,
                                     color: Colors.white,
                                   ),
@@ -105,7 +106,7 @@ class _MyCoursesState extends State<MyCourses> {
                                 errorWidget: (context, url, error) =>
                                     Image.asset(
                                   "assets/images/course1.png",
-                                  width: 100,
+                                  width: 140,
                                   height: 100,
                                   fit: BoxFit.cover,
                                 ),
@@ -130,14 +131,6 @@ class _MyCoursesState extends State<MyCourses> {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                // const SizedBox(height: 5),
-                                // Text(
-                                //   "Batch: ${course.courseDetails?.batchListId ?? 'N/A'}",
-                                //   style: TextStyle(
-                                //     fontSize: 14,
-                                //     color: Colors.grey.shade700,
-                                //   ),
-                                // ),
                                 const SizedBox(height: 8),
 
                                 // Rating & Button Row
@@ -180,13 +173,17 @@ class _MyCoursesState extends State<MyCourses> {
                                         );
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppConstant.secondaryColorLight,
+                                        backgroundColor:
+                                            AppConstant.secondaryColorLight,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
                                       ),
-                                      child: const Text("Explore",style: TextStyle(color: Colors.white),),
+                                      child: const Text(
+                                        "Explore",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
                                     ),
                                   ],
                                 ),

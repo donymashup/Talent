@@ -1,8 +1,8 @@
-const webUrl = 'https://alphaacademyonline.in/';
+const webUrl = 'https://talentonline.in/';
 // const baseUrl = 'https://alphaacademyonline.in/api/';
 //const baseUrl = 'https://demo.etcweb.in/api/';
-//const baseUrl = 'https://talentonline.in/api/';
-const baseUrl = 'https://alphaacademyonline.in/api/';
+const baseUrl = 'https://talentonline.in/api/';
+// const baseUrl = 'https://alphaacademyonline.in/api/';
 const loginUrl = 'userlogin';
 const userDetailsUrl = 'getUserDetails';
 const availableCourseUrl = 'getAvailableCourses';
@@ -25,7 +25,8 @@ const isRegistrationEnabledUrl = 'isRegistrationEnabled';
 const sendOtpUrl = 'sendOtp';
 const getNotificationsUrl = 'getNotifications';
 const getMiscellaneousFoldersUrl = 'getMiscellaneousFolders';
-
+const getRazorPayKeyUrl = 'getRazorPayKey';
+const getOpenAiKeyUrl = 'getOpenAiKey';
 
 const registerUserUrl = 'registerUser';
 const verifyPromoCodeUrl = 'verifyPromoCode';
@@ -45,5 +46,5 @@ const String printReport = "${baseUrl}printReport";
 const String attendMainTest = "${baseUrl}testseries";
 const String attendPracticeTest = "${baseUrl}practiceexam";
 
-const String email_id = 'alphaacademyalpy@gmail.com';
-const String phone_no = '+91 4772264249';
+const String email_id = 'talentgroup.in@gmail.com';
+const String phone_no = '+91 9544600224';

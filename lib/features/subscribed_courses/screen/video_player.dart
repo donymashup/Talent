@@ -1,4 +1,5 @@
-import 'package:better_player_plus/better_player_plus.dart';
+// import 'package:better_player_plus/better_player_plus.dart';
+import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
 import 'package:talent_app/common%20widgets/LargeLoading.dart';
 import 'package:talent_app/features/subscribed_courses/widgets/videoListCardWidget.dart';

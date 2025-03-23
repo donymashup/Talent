@@ -41,14 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.84"
-  better_player_plus:
-    dependency: "direct main"
-    description:
-      name: better_player_plus
-      sha256: fc8804f837b450b1b614d5e624a9312894d3089c9194330542ab04a4afa82127
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.8"
   boolean_selector:
     dependency: transitive
     description:
@@ -462,11 +454,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
-  flutter_localizations:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   flutter_markdown:
     dependency: "direct main"
     description:

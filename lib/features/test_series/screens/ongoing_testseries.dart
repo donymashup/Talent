@@ -55,7 +55,10 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
                 margin: const EdgeInsets.only(bottom: 12),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [AppConstant.secondaryColorLight, AppConstant.secondaryColorLight],
+                    colors: [
+                      AppConstant.secondaryColorLight,
+                      AppConstant.secondaryColorLight
+                    ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
@@ -71,7 +74,8 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
                 child: ListTile(
                   contentPadding: const EdgeInsets.all(12), // Reduced padding
                   // isDense: true, // Helps prevent overflow
-                  leading: const Icon(Icons.assignment, size: 40, color: Colors.white),
+                  leading: const Icon(Icons.assignment,
+                      size: 40, color: Colors.white),
                   title: Flexible(
                     child: Text(
                       test.mainTestsName ?? "Unknown Test",
@@ -87,9 +91,14 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 8),
-                      _infoText('Start Time', formatDate(test.mainTestsStart ?? ""), Colors.white70),
-                      _infoText('End Time', formatDate(test.mainTestsEnd ?? ""), Colors.white70),
-                      _infoText('Duration', test.mainTestsDuration ?? "N/A", Colors.white),
+                      _infoText(
+                          'Start Time',
+                          formatDate(test.mainTestsStart ?? ""),
+                          Colors.white70),
+                      _infoText('End Time', formatDate(test.mainTestsEnd ?? ""),
+                          Colors.white70),
+                      _infoText('Duration', test.mainTestsDuration ?? "N/A",
+                          Colors.white),
                     ],
                   ),
                   trailing: ElevatedButton(
@@ -98,8 +107,11 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => StartQuizSeriesInfo(
+                            testid: test.mainTestsId ?? "0",
                             quizTitle: test.mainTestsName ?? "Unknown Test",
-                            totalQuestions: int.tryParse(test.mainTestsQuestions ?? "0") ?? 0,
+                            totalQuestions:
+                                int.tryParse(test.mainTestsQuestions ?? "0") ??
+                                    0,
                             duration: test.mainTestsDuration ?? "N/A",
                           ),
                         ),
@@ -124,25 +136,26 @@ class _OngoingTestSeriesState extends State<OngoingTestSeries> {
   }
 
   Widget _infoText(String label, String value, Color textColor) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 2),
-    child: Wrap(
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        Icon(Icons.access_time, size: 14, color: textColor),
-        const SizedBox(width: 4),
-        Text(
-          "$label: ",
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: textColor),
-        ),
-        Text(
-          value,
-          style: TextStyle(fontSize: 14, color: textColor),
-        ),
-      ],
-    ),
-  );
-}
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          Icon(Icons.access_time, size: 14, color: textColor),
+          const SizedBox(width: 4),
+          Text(
+            "$label: ",
+            style: TextStyle(
+                fontSize: 14, fontWeight: FontWeight.bold, color: textColor),
+          ),
+          Text(
+            value,
+            style: TextStyle(fontSize: 14, color: textColor),
+          ),
+        ],
+      ),
+    );
+  }
 
   String formatDate(String inputDateTimeString) {
     if (inputDateTimeString.isEmpty) return "N/A";

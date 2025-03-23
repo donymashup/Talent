@@ -4,12 +4,14 @@ import 'package:talent_app/features/test_series/screens/attend_main_test_screen.
 
 class StartQuizSeriesInfo extends StatelessWidget {
   final String quizTitle;
+  final String testid;
   final int totalQuestions; // Changed from String to int
   final String duration;
 
   const StartQuizSeriesInfo({
     super.key,
     required this.quizTitle,
+    required this.testid,
     required this.totalQuestions,
     required this.duration,
   });
@@ -157,8 +159,7 @@ class StartQuizSeriesInfo extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => AttendMainTestScreen(
-                                    testid: totalQuestions
-                                        .toString(), // Pass test ID here
+                                    testid: testid, // Pass test ID here
                                   ),
                                 ),
                               );

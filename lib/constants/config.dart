@@ -1,7 +1,7 @@
 const webUrl = 'https://talentonline.in/';
 // const baseUrl = 'https://alphaacademyonline.in/api/';
 //const baseUrl = 'https://demo.etcweb.in/api/';
-//const baseUrl = 'https://talentonline.in/api/';
+// const baseUrl = 'https://talentonline.in/api/';
 
 const baseUrl = 'https://alphaacademyonline.in/api/';
 

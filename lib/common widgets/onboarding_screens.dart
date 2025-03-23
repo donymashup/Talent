@@ -125,12 +125,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           );
                         },
-                        child: Text(
-                          'SKIP',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
+                        child: SafeArea(
+                          child: Text(
+                            'SKIP',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ),

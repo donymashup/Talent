@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:talent_app/constants/app_constants.dart';
 import 'package:talent_app/constants/config.dart';
 import 'package:talent_app/controllers/user_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class MainPerformanceScreen extends StatelessWidget {
+class PracticePerformanceScreen extends StatelessWidget {
   final String testid;
 
-  MainPerformanceScreen({super.key, required this.testid});
+  PracticePerformanceScreen({super.key, required this.testid});
 
   final UserController userController = Get.put(UserController());
   @override
@@ -34,8 +34,8 @@ class MainPerformanceScreen extends StatelessWidget {
         ),
       )
       ..loadRequest(
-          Uri.parse('${printReport}/mains/${userData.userid}/$testid'));
-    debugPrint('${printReport}mains/${userData.userid}/$testid');
+          Uri.parse('${printReport}/practice/${userData.userid}/$testid'));
+    debugPrint('${printReport}practice/${userData.userid}/$testid');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Test Performance Report'),

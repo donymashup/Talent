@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:talent_app/constants/app_constants.dart';
 import 'package:talent_app/constants/config.dart';
 import 'package:talent_app/controllers/user_controller.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -31,9 +32,8 @@ class AttendMainTestScreen extends StatelessWidget {
           },
         ),
       )
-      ..loadRequest(
-          Uri.parse('$attendMainTest/${userController.userId}/$testid'));
-    debugPrint('$attendMainTest/${userController.userId}/$testid');
+      ..loadRequest(Uri.parse('$attendMainTest/${userData.userid}/$testid'));
+    debugPrint('$attendMainTest/${userData.userid}/$testid');
     return PopScope(
       canPop: false,
       child: Scaffold(
